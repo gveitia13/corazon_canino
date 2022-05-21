@@ -1,0 +1,62 @@
+{% extends 'body.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <form method="post" action=".">
+        <div class="card card-default circular-top circular-bottom">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="mdi mdi-trash-can-outline"></i>
+                    {{ title }}
+                </h3>
+            </div>
+            <div class="card-body circular-bottom">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="{{ action }}">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <h5><i class="icon mdi mdi-alert-decagram-outline"></i>Ha ocurrido un error al querer guardar el registro</h5>
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="alert alert-warning alert-dismissible circular">
+                    <h5><i class="icon mdi mdi-alert-decagram-outline"></i>Cuidado!</h5>
+                    Estas seguro de eliminar el registro <b>{{ object }}</b>?
+                </div>
+            </div>
+            <div class="card-footer circular-bottom">
+                <button type="submit" class="btn btn-danger circular">
+                    <i class="mdi mdi-content-save"></i> Si, aceptar
+                </button>
+                <a href="{{ list_url }}" class="btn btn-primary circular">
+                    <i class="mdi mdi-cancel"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+    <script>
+{% comment %}      $('form').on('submit', function (e) {
+        e.preventDefault();
+        let parameters = new FormData(this);
+        submit_with_ajax(window.location.pathname, 'Notificacion',
+          'Estas seguro de eliminar el siguiente registro?', parameters, () => {
+            Swal.fire({
+              title: 'Alerta',
+              html: 'Registro eliminado correcta mente',
+              icon: 'success',
+              timer: 2000,
+              onClose: () => {
+                location.href = '{{ list_url }}'
+              }
+            })
+          })
+      });{% endcomment %}
+    </script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block head_list %}
+    {#    <script src="{% static 'contrato.js' %}"></script>#}
+{% endblock %}
+
+{% block columns %}
+    {#    <td>No</td>#}
+    <td>Foto</td>
+    <td>Nombre</td>
+    <td>ID</td>
+    <td>Sexo</td>
+    <td>Opciones</td>
+{% endblock %}
+
+{% block rows %}
+    {% if object_list %}
+        {% for obj in object_list %}
+            <tr>
+                {#                <td>{{ obj.pk }}</td>#}
+                <td>{{ obj.mostrar_foto }}</td>
+                <td>{{ obj.nombre }}</td>
+                <td>{{ obj.identidad }}</td>
+                <td>{{ obj.get_sexo_display }}</td>
+                {#                <td>{{ obj.validity }}</td>#}
+                {#                <td>{{ obj.date_creation }}</td>#}
+                <td>
+                    <a href="{% url 'ficha_details' obj.id %}" class="btn btn-success btn-sm circular"><i
+                            class="mdi mdi-magnify"></i></a>
+                    <a href="{% url 'ficha_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                            class="mdi mdi-square-edit-outline"></i></a>
+                    <a href="{% url 'ficha_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                            class="mdi mdi-trash-can-outline"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td> No hay datos para mostrar</td>
+        </tr>
+    {% endif %}
+{% endblock %}

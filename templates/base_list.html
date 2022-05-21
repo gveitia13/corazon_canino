@@ -1,0 +1,82 @@
+{% extends 'body.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block head %}
+
+    {% comment %}    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap.min.css' %}">
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <link rel="stylesheet"
+          href="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/css/buttons.bootstrap4.min.css' %}">
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.colVis.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/buttons-1.6.1/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/pdfmake.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/pdfmake-0.1.36/vfs_fonts.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/jszip-2.5.0/jszip.min.js' %}"></script>{% endcomment %}
+
+    {% block head_list %}
+
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-info circular m-0">
+        <div class="card-header circular-top">
+            <h3 class="card-title">
+                <i class="mdi mdi-format-list-bulleted-square mdi-18px"></i>
+                {{ title }}
+            </h3>
+            {% block search %}
+
+            {% endblock %}
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-2" style="min-height: 325px;">
+            <table id="listTable" class="table  table-striped w3-hoverable-light">
+                <thead>
+                {% block columns %}
+
+                {% endblock %}
+
+                </thead>
+                <tbody id="tbody">
+
+                {% block rows %}
+
+                {% endblock %}
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        {% block buttons_list %}
+            <div class="card-footer circular-bottom">
+                <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
+                    <i class="mdi mdi-plus"></i> Nuevo {{ entity }}
+                </a>
+            </div>
+        {% endblock %}
+
+    </div>
+    <!-- /.card -->
+    {% block modal_form %}
+        <!-- Modal Create_Update -->
+        {#        {% include 'modal.html' %}#}
+    {% endblock %}
+
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
