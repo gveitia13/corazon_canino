@@ -1,6 +1,7 @@
 import qrcode
 from django.core.validators import RegexValidator
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 
 SOLO_TEXTO_REGEX = RegexValidator(r'^[a-zA-Z]+$', 'Solo se admiten letras')
@@ -26,7 +27,11 @@ class Ficha(models.Model):
         return self.nombre
 
     def mostrar_foto(self):
-        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular">')
+        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+                                                        'cursor-zoom-in">')
+
+    def link_foto(self):
+        return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
 
     mostrar_foto.short_description = 'Vista previa'
     mostrar_foto.allow_tags = True
@@ -35,7 +40,10 @@ class Ficha(models.Model):
         imagen = 'A'
         if self.qr is not None:
             imagen = self.qr
-        return mark_safe('<img src="/media/' + imagen + '"  width="300" height="300" >')
+        return mark_safe('<img src="' + imagen + '"  width="80" height="80" class="agrandar cursor-zoom-in">')
+
+    def link_qr(self):
+        return mark_safe(f'<a href="{self.qr}"> {self.mostrar_qr()}</a>')
 
     mostrar_qr.short_description = 'Código QR'
     mostrar_qr.allow_tags = True
@@ -46,7 +54,7 @@ class Ficha(models.Model):
             qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_H,
-                box_size=50,
+                box_size=30,
                 border=4,
             )
             esterilizado = 'Si' if self.esterilizado else 'No'
@@ -59,6 +67,7 @@ class Ficha(models.Model):
                 'sexo': str(self.sexo),
                 'esterilizado': str(esterilizado),
                 'peso': str(self.peso),
+                'link': reverse_lazy('ficha_update'),
             })
             qr.make(fit=True)
             imagen = qr.make_image(fill_color="black", back_color="white").convert('RGB')
@@ -66,7 +75,7 @@ class Ficha(models.Model):
                 pk = Ficha.objects.last().pk + 1
             else:
                 pk = 1
-            self.qr = "/qr/" + str(pk) + '.png'
+            self.qr = "/media/qr/" + str(pk) + '.png'
             self.save()
             imagen.save("media/qr/" + str(pk) + ".png")
         super(Ficha, self).save(*args, **kwargs)

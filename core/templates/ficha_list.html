@@ -8,6 +8,7 @@
 {% block columns %}
     {#    <td>No</td>#}
     <td>Foto</td>
+    <td>Qr</td>
     <td>Nombre</td>
     <td>ID</td>
     <td>Sexo</td>
@@ -19,7 +20,8 @@
         {% for obj in object_list %}
             <tr>
                 {#                <td>{{ obj.pk }}</td>#}
-                <td>{{ obj.mostrar_foto }}</td>
+                <td>{{ obj.link_foto }}</td>
+                <td>{{ obj.link_qr }}</td>
                 <td>{{ obj.nombre }}</td>
                 <td>{{ obj.identidad }}</td>
                 <td>{{ obj.get_sexo_display }}</td>

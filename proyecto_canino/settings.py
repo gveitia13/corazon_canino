@@ -38,12 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Externals apps
     'corsheaders',
     'widget_tweaks',
     'hitcount',
-    # Mis Apps
     'core',
+    'django_cleanup.apps.CleanupConfig',
     'login'
 ]
 
