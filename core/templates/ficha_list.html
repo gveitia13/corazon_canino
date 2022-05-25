@@ -10,8 +10,8 @@
     <td>Foto</td>
     <td>Qr</td>
     <td>Nombre</td>
-    <td>ID</td>
-    <td>Sexo</td>
+{#    <td>ID</td>#}
+{#    <td>Sexo</td>#}
     <td>Opciones</td>
 {% endblock %}
 
@@ -23,13 +23,13 @@
                 <td>{{ obj.link_foto }}</td>
                 <td>{{ obj.link_qr }}</td>
                 <td>{{ obj.nombre }}</td>
-                <td>{{ obj.identidad }}</td>
-                <td>{{ obj.get_sexo_display }}</td>
+{#                <td>{{ obj.identidad }}</td>#}
+{#                <td>{{ obj.get_sexo_display }}</td>#}
                 {#                <td>{{ obj.validity }}</td>#}
                 {#                <td>{{ obj.date_creation }}</td>#}
                 <td>
-                    <a href="{% url 'ficha_details' obj.id %}" class="btn btn-success btn-sm circular"><i
-                            class="mdi mdi-magnify"></i></a>
+                    <a class="btn btn-success btn-sm circular ficha-details"
+                       id="{{ obj.id }}"><i class="mdi mdi-magnify"></i></a>
                     <a href="{% url 'ficha_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
                             class="mdi mdi-square-edit-outline"></i></a>
                     <a href="{% url 'ficha_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
@@ -42,4 +42,9 @@
             <td> No hay datos para mostrar</td>
         </tr>
     {% endif %}
+{% endblock %}
+{% block javascript %}
+    {% include 'modal_ficha.html' %}
+
+    <script src="{% static 'ficha.js' %}"></script>
 {% endblock %}

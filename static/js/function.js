@@ -3,7 +3,7 @@ $(function () {
     .querySelectorAll('a')
     .forEach(e => e.classList.remove('active'))
 
-  if (window.location.pathname.includes('incidencia'))
+  if (window.location.pathname.includes('ficha'))
     changeSidebar('.incidencia-sidebar')
   if (window.location.pathname.includes('reserva'))
     changeSidebar('.reserva-sidebar')

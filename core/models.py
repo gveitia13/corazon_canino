@@ -1,6 +1,7 @@
 import qrcode
 from django.core.validators import RegexValidator
 from django.db import models
+from django.forms import model_to_dict
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 
@@ -25,6 +26,12 @@ class Ficha(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    def toJSON(self):
+        json = model_to_dict(self)
+        json['foto'] = self.foto.url
+        json['esterilizado'] = 'Si' if self.esterilizado else 'No'
+        return json
 
     def mostrar_foto(self):
         return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
@@ -54,7 +61,7 @@ class Ficha(models.Model):
             qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_H,
-                box_size=30,
+                box_size=20,
                 border=4,
             )
             esterilizado = 'Si' if self.esterilizado else 'No'
@@ -67,7 +74,7 @@ class Ficha(models.Model):
                 'sexo': str(self.sexo),
                 'esterilizado': str(esterilizado),
                 'peso': str(self.peso),
-                'link': reverse_lazy('ficha_update'),
+                # 'link': reverse_lazy('ficha_update'),
             })
             qr.make(fit=True)
             imagen = qr.make_image(fill_color="black", back_color="white").convert('RGB')
