@@ -5,73 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/static/ficha.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/IMG-20220521-WA0124.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/qr/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/qr/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/logo/promo (61).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/modal_ficha.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/004c6511-3418-4bac-85bb-c64e44b30506.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proyecto_canino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto_canino.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/created_image_1647387052887.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/carousel/promo 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/carousel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0002_ficha_date_creation.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/migrations/0002_ficha_date_creation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ficha_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/ficha_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/css/util.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/css/util.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/js/map-custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/js/map-custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/vendor/countdowntime/countdowntime.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/vendor/countdowntime/countdowntime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/vendor/css-hamburgers/hamburgers.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/vendor/css-hamburgers/hamburgers.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/login/vendor/css-hamburgers/hamburgers.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/vendor/css-hamburgers/hamburgers.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/login/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/login/login2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/login2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/wsgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mystyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/bootstrap-touchspin-4.3.0/jquery.bootstrap-touchspin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/icheck-bootstrap/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/icheck-bootstrap/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/icheck-bootstrap/icheck-bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/icheck-bootstrap/icheck-bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/icheck-bootstrap/icheck-bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/icheck-bootstrap/icheck-bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/jquery-confirm-v3.3.4/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/jquery-confirm-v3.3.4/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/material-icons/css/icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/material-icons/css/icons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/material-icons/css/icons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/material-icons/css/icons.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/material-icons/fonts/materialdesignicons-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/material-icons/fonts/materialdesignicons-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/body.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/startpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/startpage.html" afterDir="false" />
     </list>
@@ -87,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -106,30 +50,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino/media/carousel",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/media/carousel" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\static\img\logo" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\static\img" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\proyecto_canino" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\core" />
-      <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\login" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,7 +116,7 @@
       <workItem from="1653271725829" duration="7572000" />
       <workItem from="1653376634406" duration="911000" />
       <workItem from="1653446303935" duration="1421000" />
-      <workItem from="1653450643795" duration="4291000" />
+      <workItem from="1653450643795" duration="6285000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -202,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653254391671</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cosas">
+      <created>1653460734217</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653460734217</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +163,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first" />
     <MESSAGE value="1er crud hecho, detail view no pincha" />
-    <option name="LAST_COMMIT_MESSAGE" value="1er crud hecho, detail view no pincha" />
+    <MESSAGE value="cosas" />
+    <option name="LAST_COMMIT_MESSAGE" value="cosas" />
   </component>
 </project>

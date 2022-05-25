@@ -1,7 +1,17 @@
 .mdi-15px.mdi-set, .mdi-15px.mdi:before {
     font-size: 15px;
 }
+@media only screen and (min-width: 600px) {
+    .img-carousel {
+        height: 40vh !important;
+    }
+}
 
+@media only screen and (min-width: 1000px) {
+    .img-carousel {
+        height: 60vh !important;
+    }
+}
 .user-select-none {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
@@ -468,3 +478,4 @@ input.task-add {
     transition-duration: 0.5s;
     z-index: 999999;
 }
+
