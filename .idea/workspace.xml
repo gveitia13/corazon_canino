@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/media/carousel/created_image_1647387052887.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/promo 6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/carousel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/login/static/login/images/login-bg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mystyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/startpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/startpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/login/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/login/images/logo.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/login/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino/media/carousel",
+    "last_opened_file_path": "/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino/login/static/login/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,11 +63,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/login/static/login/images" />
       <recent name="$PROJECT_DIR$/media/carousel" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\static\img\logo" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\static\img" />
       <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\proyecto_canino" />
-      <recent name="C:\Users\Gilbert\PycharmProjects\proyecto_canino\core" />
     </key>
   </component>
   <component name="RunManager">
@@ -85,9 +79,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="proyecto_canino.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Gilbert\PycharmProjects\proyecto_canino\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
@@ -116,7 +110,8 @@
       <workItem from="1653271725829" duration="7572000" />
       <workItem from="1653376634406" duration="911000" />
       <workItem from="1653446303935" duration="1421000" />
-      <workItem from="1653450643795" duration="6285000" />
+      <workItem from="1653450643795" duration="6330000" />
+      <workItem from="1653491601023" duration="3697000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -153,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653460734217</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add carousel al berro">
+      <created>1653462549938</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653462549938</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +166,7 @@
     <MESSAGE value="first" />
     <MESSAGE value="1er crud hecho, detail view no pincha" />
     <MESSAGE value="cosas" />
-    <option name="LAST_COMMIT_MESSAGE" value="cosas" />
+    <MESSAGE value="add carousel al berro" />
+    <option name="LAST_COMMIT_MESSAGE" value="add carousel al berro" />
   </component>
 </project>
