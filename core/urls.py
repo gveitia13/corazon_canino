@@ -9,19 +9,14 @@ urlpatterns = [
     path('ficha/update/<int:pk>/', FichaUpdateView.as_view(), name='ficha_update'),
     path('ficha/details/<int:pk>/', FichaDetailsView.as_view(), name='ficha_details'),
     path('ficha/delete/<int:pk>/', FichaDeleteView.as_view(), name='ficha_delete'),
-    # # Incidencias
-    # path('incidencia/list/', IncidenciaListView.as_view(), name='incidencia_list'),
-    # path('incidencia/add/', IncidenciaCreateView.as_view(), name='incidencia_add'),
-    # path('incidencia/update/<int:pk>/', IncidenciaUpdateView.as_view(), name='incidencia_update'),
-    # path('incidencia/delete/<int:pk>/', IncidenciaDeleteView.as_view(), name='incidencia_delete'),
-    # # Reservas
-    # path('reserva/list/', ReservaListView.as_view(), name='reserva_list'),
-    # path('reserva/add/', ReservaCreateView.as_view(), name='reserva_add'),
-    # path('reserva/update/<int:pk>/', ReservaUpdateView.as_view(), name='reserva_update'),
-    # path('reserva/delete/<int:pk>/', ReservaDeleteView.as_view(), name='reserva_delete'),
-    # # Ventas
-    # path('venta/list/', VentaListView.as_view(), name='venta_list'),
-    # path('venta/add/', VentaCreateView.as_view(), name='venta_add'),
-    # path('venta/update/<int:pk>/', VentaUpdateView.as_view(), name='venta_update'),
-    # path('venta/delete/<int:pk>/', VentaDeleteView.as_view(), name='venta_delete'),
+    # Visitante
+    path('visitante/list/', VisitanteListView.as_view(), name='visitante_list'),
+    path('visitante/add/', VisitanteCreateView.as_view(), name='visitante_add'),
+    path('visitante/update/<int:pk>/', VisitanteUpdateView.as_view(), name='visitante_update'),
+    path('visitante/delete/<int:pk>/', VisitanteDeleteView.as_view(), name='visitante_delete'),
+    # Visita
+    path('visitas/list/', VisitaListView.as_view(), name='visita-list'),
+    path('visitas/add/', VisitaCreateView.as_view(), name='visita-add'),
+    path('visitas/update/<int:pk>/', VisitaUpdateView.as_view(), name='visita-update'),
+    path('visitas/delete/<int:pk>/', VisitaDeleteView.as_view(), name='visita-delete'),
 ]

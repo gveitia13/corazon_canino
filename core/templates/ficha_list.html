@@ -10,8 +10,7 @@
     <td>Foto</td>
     <td>Qr</td>
     <td>Nombre</td>
-{#    <td>ID</td>#}
-{#    <td>Sexo</td>#}
+
     <td>Opciones</td>
 {% endblock %}
 
@@ -19,14 +18,9 @@
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
-                {#                <td>{{ obj.pk }}</td>#}
                 <td>{{ obj.link_foto }}</td>
                 <td>{{ obj.link_qr }}</td>
                 <td>{{ obj.nombre }}</td>
-{#                <td>{{ obj.identidad }}</td>#}
-{#                <td>{{ obj.get_sexo_display }}</td>#}
-                {#                <td>{{ obj.validity }}</td>#}
-                {#                <td>{{ obj.date_creation }}</td>#}
                 <td>
                     <a class="btn btn-success btn-sm circular ficha-details"
                        id="{{ obj.id }}"><i class="mdi mdi-magnify"></i></a>
@@ -42,6 +36,16 @@
             <td> No hay datos para mostrar</td>
         </tr>
     {% endif %}
+{% endblock %}
+{% block buttons_list %}
+    <div class="card-footer circular-bottom">
+        <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
+            <i class="mdi mdi-plus"></i> Crear {{ entity }}
+        </a>
+        <a href="#" class="btn btn-info circular">
+            <i class="mdi mdi-qrcode-scan"></i> Escanear Qr
+        </a>
+    </div>
 {% endblock %}
 {% block javascript %}
     {% include 'modal_ficha.html' %}

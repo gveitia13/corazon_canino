@@ -1,0 +1,35 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block head_list %}
+{% endblock %}
+
+{% block columns %}
+    <td>Visitante</td>
+    <td>Fecha</td>
+    <td>Opciones</td>
+{% endblock %}
+
+{% block rows %}
+    {% if object_list %}
+        {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.visitante }}</td>
+                <td>{{ obj.fecha }}</td>
+                <td>
+                    <a href="{% url 'visitante_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                            class="mdi mdi-square-edit-outline"></i></a>
+                    <a href="{% url 'visitante_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                            class="mdi mdi-trash-can-outline"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td> No hay datos para mostrar</td>
+        </tr>
+    {% endif %}
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}

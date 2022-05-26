@@ -8,7 +8,7 @@
         <span class="brand-text font-weight-light">Corazón Canino</span>
     </a>
     <div class="sidebar">
-{% comment %}    {% if request.user.is_authenticated %}
+        {% comment %}    {% if request.user.is_authenticated %}
         <div class="user-panel py-2  d-flex">
             <div class="info">
                 <a href="{% url 'index' %}" class="d-block">{{ request.user.username }}</a>
@@ -16,21 +16,38 @@
         </div>
         <div class="rayita-light"></div>
         {% endif %}{% endcomment %}
-
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-{#                <li class="nav-header">Algo</li>#}
-                {% if request.user.role == 'client' or request.user.is_superuser %}
+                {#                <li class="nav-header">Algo</li>#}
+                <li class="nav-item">
+                    <a href="{% url 'ficha_list' %}" class="nav-link ficha-sidebar">
+                        <i class="nav-icon mdi mdi-dog "></i>
+                        <p>
+                            Fichas
+                        </p>
+                    </a>
+                </li>
+                {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'ficha_list' %}" class="nav-link incidencia-sidebar">
-                            <i class="nav-icon mdi mdi-dog "></i>
+                        <a href="{% url 'visitante_list' %}" class="nav-link visitante-sidebar">
+                            <i class="nav-icon mdi mdi-account "></i>
                             <p>
-                                Fichas
+                                Visitantes
                             </p>
                         </a>
                     </li>
                 {% endif %}
-{% comment %}                {% if request.user.role == 'admin' or request.user.is_superuser %}
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
+                            <i class="nav-icon mdi mdi-file-document "></i>
+                            <p>
+                                Gestionar Visitas
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
+                {% comment %}                {% if request.user.role == 'admin' or request.user.is_superuser %}
                     <li class="nav-item">
                         <a href="{% url 'balita:venta_list' %}" class="nav-link venta-sidebar">
                             <i class="nav-icon mdi mdi-cart"></i>

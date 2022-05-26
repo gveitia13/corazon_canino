@@ -1,6 +1,9 @@
+from datetime import datetime
+
+from django import forms
 from django.forms import ModelForm
 
-from core.models import Ficha
+from core.models import Ficha, Visita
 
 
 class FichaForm(ModelForm):
@@ -10,8 +13,26 @@ class FichaForm(ModelForm):
     class Meta:
         model = Ficha
         fields = '__all__'
-        exclude = ['date_creation', 'qr',]
+        exclude = ['date_creation', 'qr', ]
 
+
+class VisitaForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Visita
+        fields = '__all__'
+        widgets = {
+            'fecha': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={
+                    'value': datetime.now().strftime('%Y-%m-%d'),
+                    'class': 'circular',
+                    'type': 'date',
+                }
+            )
+        }
 
 # class InformeIncidenciaForm(ModelForm):
 #     def __init__(self, *args, **kwargs):
