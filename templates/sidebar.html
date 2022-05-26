@@ -8,24 +8,22 @@
         <span class="brand-text font-weight-light">Corazón Canino</span>
     </a>
     <div class="sidebar">
+{% comment %}    {% if request.user.is_authenticated %}
         <div class="user-panel py-2  d-flex">
-            <div class="image">
-                <img src="{% if request.user.get_image %}{{ request.user.get_image }}
-                            {% else %}{% static 'img/user2.png' %}{% endif %}"
-                     class="img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
                 <a href="{% url 'index' %}" class="d-block">{{ request.user.username }}</a>
             </div>
         </div>
         <div class="rayita-light"></div>
+        {% endif %}{% endcomment %}
+
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">Informes</li>
+{#                <li class="nav-header">Algo</li>#}
                 {% if request.user.role == 'client' or request.user.is_superuser %}
                     <li class="nav-item">
                         <a href="{% url 'ficha_list' %}" class="nav-link incidencia-sidebar">
-                            <i class="nav-icon mdi mdi-file-question "></i>
+                            <i class="nav-icon mdi mdi-dog "></i>
                             <p>
                                 Fichas
                             </p>

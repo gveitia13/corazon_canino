@@ -19,19 +19,19 @@
                     {% csrf_token %}
                     <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                         <span class="label-input100">Usuario</span>
-                        {{ form.username|add_class:'input100'|attr:'autocomplete:off'|attr:'placeholder:Enter username'|attr:'name:username' }}
+                        {{ form.username|add_class:'input100'|attr:'autocomplete:off'|attr:'placeholder:Escriba su usuario'|attr:'name:username' }}
                         {#                    <input class="input100" type="text" name="username" placeholder="Enter username">#}
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-                        <span class="label-input100">Password</span>
-                        {{ form.password|add_class:'input100'|attr:'autocomplete:off'|attr:'placeholder:Enter password'|attr:'name:pass' }}
+                        <span class="label-input100">Contraseña</span>
+                        {{ form.password|add_class:'input100'|attr:'autocomplete:off'|attr:'placeholder:Escriba su contraseña'|attr:'name:pass' }}
                         {#                        <input class="input100" type="password" name="pass" placeholder="Enter password">#}
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="flex-sb-m w-full p-b-30">
+{% comment %}                    <div class="flex-sb-m w-full p-b-30">
                         <div class="contact100-form-checkbox">
                             <input class="input-checkbox100" id="ckb1" type="checkbox" checked disabled name="remember-me">
                             <label class="label-checkbox100" for="ckb1">
@@ -40,20 +40,19 @@
                         </div>
 
                         <div>
-                            {#                            <a href="{% url 'reset_password' %}" class="txt1">#}
                             <a href="#" class="txt1">
                                 Forgot Password?
                             </a>
                         </div>
-                    </div>
+                    </div>{% endcomment %}
 
                     <div class="container-login100-form-btn">
 {#                        <a href="{% url 'startpage' %}" class="boton login100-form-btn-outline m-r-4">#}
-                        <a href="#" class="boton login100-form-btn-outline m-r-4">
-                            <i class="fa fa-angle-left"></i>&nbsp; Back
+                        <a href="{% url "index" %}" class="boton login100-form-btn-outline m-r-4">
+                            <i class="fa fa-angle-left"></i>&nbsp; Invitado
                         </a>
                         <button type="submit" class="login100-form-btn m-l-4">
-                            <i class="fa fa-sign-in"></i>&nbsp; Login
+                            <i class="fa fa-sign-in"></i>&nbsp; Iniciar sesión
                         </button>
                     </div>
                 </form>

@@ -74,7 +74,7 @@ class Ficha(models.Model):
                 'sexo': str(self.sexo),
                 'esterilizado': str(esterilizado),
                 'peso': str(self.peso),
-                # 'link': reverse_lazy('ficha_update'),
+                'link': "/",
             })
             qr.make(fit=True)
             imagen = qr.make_image(fill_color="black", back_color="white").convert('RGB')

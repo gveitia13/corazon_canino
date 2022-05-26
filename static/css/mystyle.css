@@ -479,3 +479,20 @@ input.task-add {
     z-index: 999999;
 }
 
+.detalle-tienda-cards div.card img {
+    height: 30vh !important;
+}
+
+@media screen and (max-width: 576px) {
+    #prod-img-full {
+        height: 35vh !important;
+    }
+
+    .detalle-tienda-cards div.card img {
+        height: 30vh !important;
+    }
+}
+
+.content-wrapper{
+    background: url("/static/img/bg.jpg");
+}

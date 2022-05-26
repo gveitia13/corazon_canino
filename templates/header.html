@@ -37,7 +37,7 @@
             </li>
         {% endif %}
 
-        <li class="nav-item dropdown">
+{% comment %}        <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="mdi mdi-account-settings mdi-18px"></i>
             </a>
@@ -62,10 +62,15 @@
                     <p>bla bla bla bla bla</p>
                 </a>
             </div>
-        </li>
+        </li>{% endcomment %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">
-                <i class="mdi mdi-power" style="font-size: 20px" aria-hidden="true"></i>
+                <i class="mdi mdi-power" aria-hidden="true"></i>
+                {% if request.user.is_authenticated %}
+                 Cerrar sesión
+                {% else %}
+                Iniciar sesión
+                {% endif %}
             </a>
         </li>
     </ul>
