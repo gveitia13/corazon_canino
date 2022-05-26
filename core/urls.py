@@ -19,4 +19,14 @@ urlpatterns = [
     path('visitas/add/', VisitaCreateView.as_view(), name='visita-add'),
     path('visitas/update/<int:pk>/', VisitaUpdateView.as_view(), name='visita-update'),
     path('visitas/delete/<int:pk>/', VisitaDeleteView.as_view(), name='visita-delete'),
+    # Evento
+    path('evento/list/', EventoListView.as_view(), name='evento-list'),
+    path('evento/add/', EventoCreateView.as_view(), name='evento-add'),
+    path('evento/update/<int:pk>/', EventoUpdateView.as_view(), name='evento-update'),
+    path('evento/delete/<int:pk>/', EventoDeleteView.as_view(), name='evento-delete'),
+    # Informacion
+    path('informacion/list/', InformacionListView.as_view(), name='informacion-list'),
+    path('informacion/add/', InformacionCreateView.as_view(), name='informacion-add'),
+    path('informacion/update/<int:pk>/', InformacionUpdateView.as_view(), name='informacion-update'),
+    path('informacion/delete/<int:pk>/', InformacionDeleteView.as_view(), name='informacion-delete'),
 ]

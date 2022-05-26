@@ -3,7 +3,7 @@ from datetime import datetime
 from django import forms
 from django.forms import ModelForm
 
-from core.models import Ficha, Visita
+from core.models import Ficha, Visita, Evento, Informacion
 
 
 class FichaForm(ModelForm):
@@ -34,7 +34,50 @@ class VisitaForm(ModelForm):
             )
         }
 
-# class InformeIncidenciaForm(ModelForm):
+
+class EventoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Evento
+        fields = '__all__'
+        widgets = {
+            'detalles': forms.Textarea(
+                attrs={
+                    'placeholder': 'Detalles del evento',
+                    'rows': 5,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+            'fecha': forms.DateTimeInput(
+                attrs={
+                    'class': 'circular',
+                    'type': 'datetime-local',
+                }
+            )
+        }
+
+
+class InformacionForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Informacion
+        fields = '__all__'
+        widgets = {
+            'texto': forms.Textarea(
+                attrs={
+                    'placeholder': 'Escriba el texto',
+                    'rows': 7,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+        }
+        # class InformeIncidenciaForm(ModelForm):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)
 #

@@ -14,6 +14,12 @@
     }
 }
 
+@media only screen and (max-width: 500px) {
+    .img-carousel {
+        height: 30vh !important;
+    }
+}
+
 .user-select-none {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;

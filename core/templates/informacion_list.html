@@ -1,0 +1,62 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block head_list %}
+{% endblock %}
+
+{% block columns %}
+    {% comment %}    <td>Titulo</td>
+    <td>Texto</td>
+    <td>Opciones</td>{% endcomment %}
+{% endblock %}
+
+{% block rows %}
+    {% comment %}    {% if object_list %}
+        {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.title }}</td>
+                <td>{{ obj.texto }}</td>
+                <td>
+                    <a href="{% url 'informacion-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                            class="mdi mdi-square-edit-outline"></i></a>
+                    <a href="{% url 'informacion-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                            class="mdi mdi-trash-can-outline"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td> No hay datos para mostrar</td>
+        </tr>
+    {% endif %}{% endcomment %}
+
+    {% if object_list %}
+        {% for obj in object_list %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+              <span class="card-title">
+                    {{ obj.title }}
+                </span>
+                    </div>
+                    <div class="card-body">
+                        <span>{{ obj.texto }}</span>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'informacion-update' obj.pk %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i> Editar</a>
+                        <a href="{% url 'informacion-delete' obj.pk %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i> Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td> No hay datos para mostrar</td>
+        </tr>
+    {% endif %}
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}

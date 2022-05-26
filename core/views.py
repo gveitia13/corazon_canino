@@ -1,16 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.forms import model_to_dict
 from django.http import JsonResponse
-from django.shortcuts import render
-
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 
-from core.forms import FichaForm, VisitaForm
-from core.models import Ficha, Visitante, Visita
+from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm
+from core.models import Ficha, Visitante, Visita, Evento, Informacion
 
 
 class Startpage(generic.TemplateView):
@@ -227,4 +223,122 @@ class VisitaDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['entity'] = 'Visita'
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar Visita'
+        return context
+
+
+# CRUD Evento
+class EventoListView(generic.ListView, ):
+    model = Evento
+    template_name = 'evento_list.html'
+    queryset = Evento.objects.all()
+    success_url = reverse_lazy('evento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('evento-add')
+        context['entity'] = 'Evento'
+        context['title'] = 'Listado de eventos'
+        return context
+
+
+class EventoCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Evento
+    template_name = 'form.html'
+    form_class = EventoForm
+    success_url = reverse_lazy('evento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('evento-add')
+        context['entity'] = 'Evento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Registrar un evento'
+        return context
+
+
+class EventoUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Evento
+    template_name = 'form.html'
+    form_class = EventoForm
+    success_url = reverse_lazy('evento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('evento-add')
+        context['entity'] = 'Evento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar evento'
+        return context
+
+
+class EventoDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Evento
+    template_name = 'delete.html'
+    success_url = reverse_lazy('evento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('evento-add')
+        context['entity'] = 'Evento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar evento'
+        return context
+
+
+# CRUD Informacion
+class InformacionListView(generic.ListView, ):
+    model = Informacion
+    template_name = 'informacion_list.html'
+    queryset = Informacion.objects.all()
+    success_url = reverse_lazy('informacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('informacion-add')
+        context['entity'] = 'Información'
+        context['title'] = 'Información del proyecto'
+        return context
+
+
+class InformacionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Informacion
+    template_name = 'form.html'
+    form_class = InformacionForm
+    success_url = reverse_lazy('informacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('informacion-add')
+        context['entity'] = 'Información'
+        context['list_url'] = self.success_url
+        context['title'] = 'Crear información'
+        return context
+
+
+class InformacionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Informacion
+    template_name = 'form.html'
+    form_class = InformacionForm
+    success_url = reverse_lazy('informacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('informacion-add')
+        context['entity'] = 'Información'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar información'
+        return context
+
+
+class InformacionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Informacion
+    template_name = 'delete.html'
+    success_url = reverse_lazy('informacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('informacion-add')
+        context['entity'] = 'Información'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Información'
         return context

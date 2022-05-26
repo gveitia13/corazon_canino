@@ -107,3 +107,29 @@ class Visita(models.Model):
 
     def __str__(self):
         return self.visitante.nombre + ' - ' + str(self.fecha)
+
+
+class Evento(models.Model):
+    nombre = models.CharField(max_length=255, verbose_name="Nombre")
+    foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
+    tipo = models.CharField(max_length=255, verbose_name="Tipo")
+    fecha = models.DateTimeField(default=datetime.now, verbose_name="Fecha")
+    detalles = models.CharField(max_length=500, verbose_name="Detalles")
+
+    def __str__(self):
+        return self.nombre
+
+    def mostrar_foto(self):
+        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+                                                        'cursor-zoom-in">')
+
+    mostrar_foto.short_description = 'Vista previa'
+    mostrar_foto.allow_tags = True
+
+
+class Informacion(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Titulo", null=True, blank=True)
+    texto = models.CharField(max_length=900, verbose_name="Texto")
+
+    def __str__(self):
+        return self.title

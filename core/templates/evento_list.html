@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block columns %}
-    <td>Visitante</td>
+    <td>Foto</td>
+    <td>Nombre</td>
     <td>Fecha</td>
     <td>Opciones</td>
 {% endblock %}
@@ -14,12 +15,13 @@
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
-                <td>{{ obj.visitante }}</td>
+                <td>{{ obj.mostrar_foto }}</td>
+                <td>{{ obj.nombre }}</td>
                 <td>{{ obj.fecha }}</td>
                 <td>
-                    <a href="{% url 'visita-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                    <a href="{% url 'evento-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
                             class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'visita-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                    <a href="{% url 'evento-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
                             class="mdi mdi-trash-can-outline"></i></a>
                 </td>
             </tr>

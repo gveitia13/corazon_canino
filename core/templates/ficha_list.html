@@ -42,13 +42,28 @@
         <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
             <i class="mdi mdi-plus"></i> Crear {{ entity }}
         </a>
-        <a href="#" class="btn btn-info circular">
+        <a href="#" class="btn btn-info circular" id="scan-qr">
             <i class="mdi mdi-qrcode-scan"></i> Escanear Qr
         </a>
     </div>
 {% endblock %}
 {% block javascript %}
     {% include 'modal_ficha.html' %}
-
     <script src="{% static 'ficha.js' %}"></script>
+{% comment %}    <video id="preview"></video>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
+      scanner.addListener('scan', function (content) {
+        console.log(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>{% endcomment %}
 {% endblock %}
