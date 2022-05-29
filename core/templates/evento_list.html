@@ -13,9 +13,9 @@
             {% for obj in object_list %}
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="card card-product">
-                        <a style="color: inherit">
-                            <img src="{{ obj.foto.url }}" class="card-img-top p-2"
-                                 alt="prueba">
+{#                        <a style="color: inherit">#}
+                        <a href="{{ obj.foto.url }}"><img src="{{ obj.foto.url }}" class="card-img-top p-2"
+                                 alt="prueba"></a>
                             <div class="card-body">
                                 <span class="text-lg font-weight-bold truncate-1">{{ obj.nombre }}:</span>
                                 <p class="truncate-1"><b>Tipo:</b> {{ obj.tipo }}</p>
@@ -29,7 +29,7 @@
                                    class="btn btn-danger btn-sm circular"><i
                                         class="mdi mdi-trash-can-outline"></i> Eliminar</a>
                             </div>
-                        </a>
+{#                        </a>#}
                     </div>
                 </div>
             {% endfor %}

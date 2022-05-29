@@ -36,18 +36,15 @@
                                     <span id="modal-name" class="text-muted"></span>
                                 </div>
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Identidad: </span>
-                                    <span class="text-muted" id="modal-iden"> </span>
-                                </div>
-                                <div class="truncate-1">
                                     <span class="d-sm-inline-block d-none">Sexo: </span>
                                     <span class="text-muted" id="modal-sexo"> </span>
                                 </div>
-                               <div class="truncate-1">
+                                <div class="truncate-1">
                                     <span class="d-sm-inline-block d-none">Esterilizado: </span>
                                     <span class="text-muted" id="modal-esterilizado"> </span>
                                 </div>
-{% comment %}                                <div class="icheck-primary" style="opacity: 1">
+
+                                {% comment %}                                <div class="icheck-primary" style="opacity: 1">
                                     <input type="checkbox" disabled id="modal-esterilizado"/>
                                     <label for="is_staff" style="opacity: 1">Esterilizado</label>
                                 </div>{% endcomment %}
@@ -66,7 +63,7 @@
                                     <span class="text-muted" id="modal-raza"> -------</span>
                                 </div>
                             </div>
-{% comment %}                            <div class="col-12 user-groups">
+                            {% comment %}                            <div class="col-12 user-groups">
                                 <span class="d-inline-block"><i class="mdi mdi-account-group-outline"></i>
                                 <span class="d-sm-inline-block d-none">Groups:</span>
                                 <span id="groups"></span></span>
@@ -76,6 +73,12 @@
                                 <span class="d-sm-inline-block d-none">About me:</span>
                                 <span class="text-muted" id="about"> bla bla</span></span>
                             </div>{% endcomment %}
+                            <div class="col-12">
+                                <div class="">
+                                    <span class="d-sm-inline-block d-none">Enfermedades: </span>
+                                    <span class="text-muted" id="modal-enfermedades"> </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

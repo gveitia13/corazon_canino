@@ -1,13 +1,10 @@
 {% extends 'base_list.html' %}
 {% load static %}
 
-{% block head_list %}
-{% endblock %}
-
 {% block columns %}
+    <td>Foto</td>
     <td>Nombre</td>
     <td>Teléfono</td>
-    <td>Veterinario</td>
     <td>Opciones</td>
 {% endblock %}
 
@@ -15,17 +12,13 @@
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
-                <td>{{ obj.nombre }} {{ obj.apellido }}</td>
+                <td>{{ obj.link_foto }}</td>
+                <td>{{ obj.nombre }}</td>
                 <td>{{ obj.telefono }}</td>
-                {% if obj.veterinario %}
-                    <td>Si</td>
-                {% else %}
-                    <td>No</td>
-                {% endif %}
                 <td>
-                    <a href="{% url 'visitante_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                    <a href="{% url 'asociado-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
                             class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'visitante_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                    <a href="{% url 'asociado-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
                             class="mdi mdi-trash-can-outline"></i></a>
                 </td>
             </tr>
@@ -35,7 +28,4 @@
             <td> No hay datos para mostrar</td>
         </tr>
     {% endif %}
-{% endblock %}
-{% block javascript %}
-
 {% endblock %}

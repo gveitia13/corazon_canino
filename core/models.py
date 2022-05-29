@@ -1,6 +1,7 @@
 from datetime import datetime
 
 import qrcode
+from crum import get_current_request
 from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
 from django.forms import model_to_dict
@@ -17,13 +18,13 @@ class Ficha(models.Model):
         ('h', 'Hembra'),
     )
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
-    # identidad = models.CharField(max_length=255, unique=True, verbose_name="Identidad")
     color = models.CharField(max_length=255, verbose_name="Color")
     raza = models.CharField(max_length=255, verbose_name="Raza")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
     sexo = models.CharField(max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
     esterilizado = models.BooleanField(default=False, verbose_name="Esterilizado")
     peso = models.FloatField(verbose_name="Peso en KG")
+    enfermedades = models.CharField(max_length=255, verbose_name='Enfermedades o lesiones', null=True, blank=True)
     qr = models.CharField(max_length=900, blank=True, null=True, verbose_name="Código Qr")
     date_creation = models.DateField(auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
@@ -33,7 +34,9 @@ class Ficha(models.Model):
     def toJSON(self):
         json = model_to_dict(self)
         json['foto'] = self.foto.url
+        json['sexo'] = 'Macho' if self.sexo == 'm' else 'Hembra'
         json['esterilizado'] = 'Si' if self.esterilizado else 'No'
+        json['enfermedades'] = 'Ninguna' if not self.enfermedades else self.enfermedades
         return json
 
     def mostrar_foto(self):
@@ -59,6 +62,8 @@ class Ficha(models.Model):
     mostrar_qr.allow_tags = True
 
     def save(self, *args, **kwargs):
+        request = get_current_request()
+        print(request.get_host())
         if not self.qr:
             qr = qrcode.make()
             qr = qrcode.QRCode(
@@ -68,7 +73,6 @@ class Ficha(models.Model):
                 border=4,
             )
             esterilizado = 'Si' if self.esterilizado else 'No'
-
             qr.add_data({
                 'nombre': str(self.nombre),
                 'color': str(self.color),
@@ -76,7 +80,7 @@ class Ficha(models.Model):
                 'sexo': str(self.sexo),
                 'esterilizado': str(esterilizado),
                 'peso': str(self.peso),
-                'link': "/",
+                'link': f"http://{request.get_host()}/ficha/update/{self.pk}/",
             })
             qr.make(fit=True)
             imagen = qr.make_image(fill_color="black", back_color="white").convert('RGB')
@@ -141,3 +145,41 @@ class Informacion(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    apellido = models.CharField(max_length=100, verbose_name="Apellidos")
+    area = models.CharField(max_length=100, verbose_name="Facultad o área", choices=(
+        ('f1', 'Facultad 1'),
+        ('f2', 'Facultad 3'),
+        ('f3', 'Facultad 3'),
+        ('f4', 'Facultad 4'),
+        ('fte', 'Facultad FTE'),
+        ('citec', 'Facultad CITEC'),
+    ))
+    cargo = models.CharField(max_length=150, verbose_name='Cargo', null=True, blank=True)
+    telefono = models.CharField(verbose_name='Teléfono', max_length=20,
+                                help_text='Puede empezar con +, el resto solo dígitos',
+                                validators=[TELEFONO_REGEX])
+
+    def __str__(self):
+        return self.nombre
+
+
+class Asociado(models.Model):
+    foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
+    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    telefono = models.CharField(verbose_name='Teléfono', max_length=20,
+                                validators=[TELEFONO_REGEX])
+    link = models.URLField(max_length=900, verbose_name='Link de contacto')
+
+    def __str__(self):
+        return self.nombre
+
+    def mostrar_foto(self):
+        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+                                                        'cursor-zoom-in">')
+
+    def link_foto(self):
+        return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')

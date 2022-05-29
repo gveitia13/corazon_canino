@@ -6,7 +6,7 @@ from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
 from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm
-from core.models import Ficha, Visita, Evento, Informacion
+from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado
 
 
 class Startpage(generic.TemplateView):
@@ -210,6 +210,7 @@ class VisitaUpdateView(LoginRequiredMixin, generic.UpdateView):
         context['entity'] = 'Visita'
         context['list_url'] = self.success_url
         context['title'] = 'Editar Visita'
+        # self.request.get_host()
         return context
 
 
@@ -342,4 +343,122 @@ class InformacionDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['entity'] = 'Información'
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar Información'
+        return context
+
+
+# CRUD Contacto
+class ContactoListView(generic.ListView, ):
+    model = Contacto
+    template_name = 'contacto_list.html'
+    queryset = Contacto.objects.all()
+    success_url = reverse_lazy('contacto-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('contacto-add')
+        context['entity'] = 'Contacto'
+        context['title'] = 'Listado de miembros del proyecto'
+        return context
+
+
+class ContactoCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Contacto
+    template_name = 'form.html'
+    fields = '__all__'
+    success_url = reverse_lazy('contacto-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('contacto-add')
+        context['entity'] = 'Contacto'
+        context['list_url'] = self.success_url
+        context['title'] = 'Crear Contacto'
+        return context
+
+
+class ContactoUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Contacto
+    template_name = 'form.html'
+    fields = '__all__'
+    success_url = reverse_lazy('contacto-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('contacto-add')
+        context['entity'] = 'Contacto'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar Contacto'
+        return context
+
+
+class ContactoDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Contacto
+    template_name = 'delete.html'
+    success_url = reverse_lazy('contacto-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('contacto-add')
+        context['entity'] = 'Contacto'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Contacto'
+        return context
+
+
+# CRUD Asociado
+class AsociadoListView(generic.ListView, ):
+    model = Asociado
+    template_name = 'asociado_list.html'
+    queryset = Asociado.objects.all()
+    success_url = reverse_lazy('asociado-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('asociado-add')
+        context['entity'] = 'Asociado'
+        context['title'] = 'Listado de asociados al proyecto'
+        return context
+
+
+class AsociadoCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Asociado
+    template_name = 'form.html'
+    fields = '__all__'
+    success_url = reverse_lazy('asociado-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('asociado-add')
+        context['entity'] = 'Asociado'
+        context['list_url'] = self.success_url
+        context['title'] = 'Crear Asociado'
+        return context
+
+
+class AsociadoUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Asociado
+    template_name = 'form.html'
+    fields = '__all__'
+    success_url = reverse_lazy('asociado-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('asociado-add')
+        context['entity'] = 'Asociado'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar Asociado'
+        return context
+
+
+class AsociadoDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Asociado
+    template_name = 'delete.html'
+    success_url = reverse_lazy('asociado-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('asociado-add')
+        context['entity'] = 'Asociado'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Asociado'
         return context

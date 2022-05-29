@@ -18,29 +18,35 @@
         {% endif %}{% endcomment %}
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                {#                <li class="nav-header">Algo</li>#}
+                <li class="nav-header">Principal</li>
                 <li class="nav-item">
                     <a href="{% url 'ficha_list' %}" class="nav-link ficha-sidebar">
-                        <i class="nav-icon mdi mdi-dog "></i>
+                        <i class="nav-icon mdi mdi-dog-service"></i>
                         <p>
                             Fichas
                         </p>
                     </a>
                 </li>
-
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
-                            <i class="nav-icon mdi mdi-file-document "></i>
-                            <p>
-                                Visitas
-                            </p>
-                        </a>
-                    </li>
-                {% endif %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link vacuna-sidebar">
+                        <i class="nav-icon mdi mdi-contacts-outline"></i>
+                        <p>
+                            Vacunas
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link medicamento-sidebar">
+                        <i class="nav-icon mdi mdi-pill"></i>
+                        <p>
+                            Medicamentos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">Conoce más</li>
                 <li class="nav-item">
                     <a href="{% url 'evento-list' %}" class="nav-link evento-sidebar">
-                        <i class="nav-icon mdi mdi-eventbrite"></i>
+                        <i class="nav-icon mdi mdi-calendar-alert"></i>
                         <p>
                             Eventos
                         </p>
@@ -54,46 +60,41 @@
                         </p>
                     </a>
                 </li>
-                {% comment %}                {% if request.user.role == 'admin' or request.user.is_superuser %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link enfermedades-sidebar">
+                        <i class="nav-icon mdi mdi-bacteria"></i>
+                        <p>
+                            Enfermedades
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">Colaboradores</li>
+                {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'balita:venta_list' %}" class="nav-link venta-sidebar">
-                            <i class="nav-icon mdi mdi-cart"></i>
+                        <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
+                            <i class="nav-icon mdi mdi-file-document "></i>
                             <p>
-                                Ventas
+                                Visitas
                             </p>
                         </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a href="{% url 'balita:reserva_list' %}" class="nav-link reserva-sidebar">
-                        <i class="nav-icon mdi mdi-checkbox-multiple-marked"></i>
+                    <a href="{% url 'asociado-list' %}" class="nav-link asociado-sidebar">
+                        <i class="nav-icon mdi mdi-account-supervisor"></i>
                         <p>
-                            Reservaciones
+                            Asociados
                         </p>
                     </a>
                 </li>
-                <div class="rayita-light"></div>
-                <li class="nav-header">Contrataciones</li>
-                {% if request.user.role == 'admin' or request.user.is_superuser %}
-                    <li class="nav-item">
-                        <a href="{% url 'balita:contrato_list' %}" class="nav-link contrato-sidebar">
-                            <i class="nav-icon mdi mdi-file-document"></i>
-                            <p>
-                                Contratos
-                            </p>
-                        </a>
-                    </li>
-                {% endif %}
-                {% if request.user.role == 'admin' or request.user.is_superuser %}
-                    <li class="nav-item">
-                        <a href="{% url 'user:user_list' %}" class="nav-link user-sidebar">
-                            <i class="nav-icon mdi mdi-account-group"></i>
-                            <p>
-                                Usuarios
-                            </p>
-                        </a>
-                    </li>
-                {% endif %}{% endcomment %}
+                <li class="nav-item">
+                    <a href="{% url 'contacto-list' %}" class="nav-link contacto-sidebar">
+                        <i class="nav-icon mdi mdi-contacts"></i>
+                        <p>
+                            Contactos
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

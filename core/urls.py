@@ -24,4 +24,14 @@ urlpatterns = [
     path('informacion/add/', InformacionCreateView.as_view(), name='informacion-add'),
     path('informacion/update/<int:pk>/', InformacionUpdateView.as_view(), name='informacion-update'),
     path('informacion/delete/<int:pk>/', InformacionDeleteView.as_view(), name='informacion-delete'),
+    # Contacto
+    path('contacto/list/', ContactoListView.as_view(), name='contacto-list'),
+    path('contacto/add/', ContactoCreateView.as_view(), name='contacto-add'),
+    path('contacto/update/<int:pk>/', ContactoUpdateView.as_view(), name='contacto-update'),
+    path('contacto/delete/<int:pk>/', ContactoDeleteView.as_view(), name='contacto-delete'),
+    # Asociado
+    path('asociado/list/', AsociadoListView.as_view(), name='asociado-list'),
+    path('asociado/add/', AsociadoCreateView.as_view(), name='asociado-add'),
+    path('asociado/update/<int:pk>/', AsociadoUpdateView.as_view(), name='asociado-update'),
+    path('asociado/delete/<int:pk>/', AsociadoDeleteView.as_view(), name='asociado-delete'),
 ]

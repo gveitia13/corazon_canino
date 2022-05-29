@@ -5,67 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/migrations/0002_visita_organizacion_alter_ficha_color_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/migrations/0003_informacion_foto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/migrations/0004_remove_ficha_identidad.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/1RA FOTO QUE DEBE SALIR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/2da foto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/3ra foto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/4ta foto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/carousel/5ta foto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/aca92fb2551f323e1cba73cae558d154.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/created_image_1647394917988.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/promo2_15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/promo2_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/promo2_9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/promo_12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/promo_15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/qr/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0005_contacto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0006_asociado.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0007_remove_asociado_apellido.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0008_ficha_enfermedades.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/asociado_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/contacto_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/AABA.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/BAC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/ceda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/ceda_D9axZJP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/justin-bieber-grammys.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/kitten-whiskers-cat-food-cat-person-kitten-ff033e5baf83c3f24bb7eada4aa552a0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/promo2_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/promo2_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/css/materialdesignicons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/css/materialdesignicons.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/css/materialdesignicons.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/css/materialdesignicons.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/fonts/materialdesignicons-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/fonts/materialdesignicons-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/fonts/materialdesignicons-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/fonts/materialdesignicons-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_extras.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_path.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/lib/MaterialDesign-Webfont-master/scss/materialdesignicons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/proyecto_canino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto_canino.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0002_ficha_date_creation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0003_visitante_alter_ficha_color_alter_ficha_esterilizado_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0004_evento_informacion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/migrations/0005_informacion_title.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/static/ficha.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/ficha.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/evento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/evento_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/informacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/informacion_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/visita_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/visita_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/visitante_list.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/created_image_1647387052887.png" beforeDir="false" afterPath="$PROJECT_DIR$/media/fotos/created_image_1647387052887.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/carousel/promo 6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/Captura_de_pantalla_de_2022-05-23_23-03-51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/Captura_de_pantalla_de_2022-05-25_00-56-52.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/IMG-20220521-WA0124.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/IMG-20220521-WA0125.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/Screenshot_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/Screenshot_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/promo2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/promo_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/media/qr/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/media/qr/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requerimientos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requerimientos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mystyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/login/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/login/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/cards_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cards_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/carousel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carousel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modal_ficha.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modal_ficha.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,30 +89,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino/media/carousel&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/media/gilbert/7ED276DBD276975D/Users/Gilbert/PycharmProjects/proyecto_canino/static/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editing.templates"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/lib" />
       <recent name="$PROJECT_DIR$/media/carousel" />
       <recent name="$PROJECT_DIR$/static/lib/instascan" />
       <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$/static/img/index" />
-      <recent name="$PROJECT_DIR$/login/static/login/images" />
     </key>
   </component>
   <component name="RunManager">
@@ -174,7 +166,7 @@
       <workItem from="1653544108171" duration="7639000" />
       <workItem from="1653579531962" duration="19582000" />
       <workItem from="1653769390434" duration="2181000" />
-      <workItem from="1653775837730" duration="14570000" />
+      <workItem from="1653775837730" duration="26453000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -246,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653598932322</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="visitas&#10;evento&#10;informacion&#10;fichas">
+      <created>1653796653195</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1653796653195</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +261,7 @@
     <MESSAGE value="add cards to the startpage" />
     <MESSAGE value="cositas" />
     <MESSAGE value="add varios modelos" />
-    <option name="LAST_COMMIT_MESSAGE" value="add varios modelos" />
+    <MESSAGE value="visitas&#10;evento&#10;informacion&#10;fichas" />
+    <option name="LAST_COMMIT_MESSAGE" value="visitas&#10;evento&#10;informacion&#10;fichas" />
   </component>
 </project>

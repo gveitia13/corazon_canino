@@ -11,11 +11,11 @@ $('.ficha-details').on('click', function () {
       document.querySelector('#qr-image').src = response['qr']
       document.querySelector('#modal-name').innerText = response['nombre']
       document.querySelector('#modal-color').innerText = response['color']
-      document.querySelector('#modal-iden').innerText = response['identidad']
-      document.querySelector('#modal-peso').innerText = response['peso']
+      document.querySelector('#modal-peso').innerText = response['peso'] + ' Kg'
       document.querySelector('#modal-raza').innerText = response['raza']
       document.querySelector('#modal-sexo').innerText = response['sexo']
       document.querySelector('#modal-esterilizado').innerText = response['esterilizado']
+      document.querySelector('#modal-enfermedades').innerText = response['enfermedades']
 /*      if (response.esterilizado ==='Si')
           $('#modal-esterilizado').attr('checked', true)*/
       $('#ficha-info').modal('show')
