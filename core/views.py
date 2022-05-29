@@ -6,7 +6,7 @@ from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
 from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm
-from core.models import Ficha, Visitante, Visita, Evento, Informacion
+from core.models import Ficha, Visita, Evento, Informacion
 
 
 class Startpage(generic.TemplateView):
@@ -109,66 +109,67 @@ class FichaDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 # CRUD Visitante
-class VisitanteListView(LoginRequiredMixin, generic.ListView, ):
-    model = Visitante
-    template_name = 'visitante_list.html'
-    queryset = Visitante.objects.all()
-    success_url = reverse_lazy('visitante_list')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['create_url'] = reverse_lazy('visitante_add')
-        context['entity'] = 'Visitante'
-        context['title'] = 'Listado de visitantes'
-        return context
-
-
-class VisitanteCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Visitante
-    template_name = 'form.html'
-    fields = "__all__"
-    success_url = reverse_lazy('visitante_list')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['create_url'] = reverse_lazy('visitante_add')
-        context['entity'] = 'Visitante'
-        context['list_url'] = self.success_url
-        context['title'] = 'Crear un Visitante'
-        return context
-
-
-class VisitanteUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Visitante
-    template_name = 'form.html'
-    fields = "__all__"
-    success_url = reverse_lazy('visitante_list')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['create_url'] = reverse_lazy('visitante_add')
-        context['entity'] = 'Visitante'
-        context['list_url'] = self.success_url
-        context['title'] = 'Editar Visitante'
-        return context
-
-
-class VisitanteDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Visitante
-    template_name = 'delete.html'
-    success_url = reverse_lazy('visitante_list')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['create_url'] = reverse_lazy('visitante_add')
-        context['entity'] = 'Visitante'
-        context['list_url'] = self.success_url
-        context['title'] = 'Eliminar Visitante'
-        return context
+# class VisitanteListView(LoginRequiredMixin, generic.ListView, ):
+#     model = Visitante
+#     template_name = 'visitante_list.html'
+#     queryset = Visitante.objects.all()
+#     success_url = reverse_lazy('visitante_list')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['create_url'] = reverse_lazy('visitante_add')
+#         context['entity'] = 'Visitante'
+#         context['title'] = 'Listado de visitantes'
+#         return context
+#
+#
+# class VisitanteCreateView(LoginRequiredMixin, generic.CreateView):
+#     model = Visitante
+#     template_name = 'form.html'
+#     fields = "__all__"
+#     success_url = reverse_lazy('visitante_list')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['create_url'] = reverse_lazy('visitante_add')
+#         context['entity'] = 'Visitante'
+#         context['list_url'] = self.success_url
+#         context['title'] = 'Crear un Visitante'
+#         return context
+#
+#
+# class VisitanteUpdateView(LoginRequiredMixin, generic.UpdateView):
+#     model = Visitante
+#     template_name = 'form.html'
+#     fields = "__all__"
+#     success_url = reverse_lazy('visitante_list')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['create_url'] = reverse_lazy('visitante_add')
+#         context['entity'] = 'Visitante'
+#         context['list_url'] = self.success_url
+#         context['title'] = 'Editar Visitante'
+#         return context
+#
+#
+# class VisitanteDeleteView(LoginRequiredMixin, generic.DeleteView):
+#     model = Visitante
+#     template_name = 'delete.html'
+#     success_url = reverse_lazy('visitante_list')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['create_url'] = reverse_lazy('visitante_add')
+#         context['entity'] = 'Visitante'
+#         context['list_url'] = self.success_url
+#         context['title'] = 'Eliminar Visitante'
+#         return context
 
 
 # CRUD Visita
-class VisitaListView(LoginRequiredMixin, generic.ListView, ):
+
+class VisitaListView(generic.ListView, ):
     model = Visita
     template_name = 'visita_list.html'
     queryset = Visita.objects.all()

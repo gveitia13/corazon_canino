@@ -9,11 +9,6 @@ urlpatterns = [
     path('ficha/update/<int:pk>/', FichaUpdateView.as_view(), name='ficha_update'),
     path('ficha/details/<int:pk>/', FichaDetailsView.as_view(), name='ficha_details'),
     path('ficha/delete/<int:pk>/', FichaDeleteView.as_view(), name='ficha_delete'),
-    # Visitante
-    path('visitante/list/', VisitanteListView.as_view(), name='visitante_list'),
-    path('visitante/add/', VisitanteCreateView.as_view(), name='visitante_add'),
-    path('visitante/update/<int:pk>/', VisitanteUpdateView.as_view(), name='visitante_update'),
-    path('visitante/delete/<int:pk>/', VisitanteDeleteView.as_view(), name='visitante_delete'),
     # Visita
     path('visitas/list/', VisitaListView.as_view(), name='visita-list'),
     path('visitas/add/', VisitaCreateView.as_view(), name='visita-add'),

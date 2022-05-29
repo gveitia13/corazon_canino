@@ -27,22 +27,13 @@
                         </p>
                     </a>
                 </li>
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'visitante_list' %}" class="nav-link visitante-sidebar">
-                            <i class="nav-icon mdi mdi-account "></i>
-                            <p>
-                                Visitantes
-                            </p>
-                        </a>
-                    </li>
-                {% endif %}
+
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
                             <i class="nav-icon mdi mdi-file-document "></i>
                             <p>
-                                Gestionar Visitas
+                                Visitas
                             </p>
                         </a>
                     </li>

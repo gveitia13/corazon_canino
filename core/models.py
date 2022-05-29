@@ -1,13 +1,14 @@
 from datetime import datetime
 
 import qrcode
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
 from django.forms import model_to_dict
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 
 SOLO_TEXTO_REGEX = RegexValidator(r'^[a-zA-Z]+$', 'Solo se admiten letras')
+TELEFONO_REGEX = RegexValidator(r'^[\+]?[\d]{5,15}$', 'Formato incorrecto')
 
 
 class Ficha(models.Model):
@@ -15,14 +16,14 @@ class Ficha(models.Model):
         ('m', 'Macho'),
         ('h', 'Hembra'),
     )
-    nombre = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Nombre")
-    identidad = models.CharField(max_length=255, unique=True, verbose_name="Identidad")
-    color = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Color")
-    raza = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Raza")
+    nombre = models.CharField(max_length=255, verbose_name="Nombre")
+    # identidad = models.CharField(max_length=255, unique=True, verbose_name="Identidad")
+    color = models.CharField(max_length=255, verbose_name="Color")
+    raza = models.CharField(max_length=255, verbose_name="Raza")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
     sexo = models.CharField(max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
     esterilizado = models.BooleanField(default=False, verbose_name="Esterilizado")
-    peso = models.FloatField(verbose_name="Peso en LB")
+    peso = models.FloatField(verbose_name="Peso en KG")
     qr = models.CharField(max_length=900, blank=True, null=True, verbose_name="Código Qr")
     date_creation = models.DateField(auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
@@ -70,7 +71,6 @@ class Ficha(models.Model):
 
             qr.add_data({
                 'nombre': str(self.nombre),
-                'identidad': str(self.identidad),
                 'color': str(self.color),
                 'raza': str(self.raza),
                 'sexo': str(self.sexo),
@@ -90,23 +90,30 @@ class Ficha(models.Model):
         super(Ficha, self).save(*args, **kwargs)
 
 
-class Visitante(models.Model):
-    nombre = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Nombre")
-    apellido = models.CharField(max_length=255, verbose_name="Apellido")
-    edad = models.IntegerField(null=True, blank=True, verbose_name="Edad (opcional)")
-    telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono")
-    veterinario = models.BooleanField(default=True, verbose_name="Es veterinario")
-
-    def __str__(self):
-        return self.nombre
+# class Visitante(models.Model):
+#     nombre = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Nombre")
+#     apellido = models.CharField(max_length=255, verbose_name="Apellido")
+#     edad = models.IntegerField(null=True, blank=True, verbose_name="Edad (opcional)")
+#     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono")
+#     veterinario = models.BooleanField(default=True, verbose_name="Es veterinario")
+#
+#     def __str__(self):
+#         return self.nombre
 
 
 class Visita(models.Model):
-    visitante = models.ForeignKey(Visitante, on_delete=models.SET_NULL, null=True, verbose_name="Visitante")
+    nombre = models.CharField(max_length=255, verbose_name="Nombre")
+    apellido = models.CharField(max_length=255, verbose_name="Apellidos")
+    edad = models.IntegerField(null=True, blank=True, verbose_name="Edad (opcional)")
+    telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
+                                validators=[TELEFONO_REGEX])
+    ci = models.CharField(max_length=11, validators=[MinLengthValidator(11)], verbose_name='Carnet')
+    organizacion = models.CharField(max_length=255, verbose_name="Organización", null=True, blank=True)
+    veterinario = models.BooleanField(default=True, verbose_name="Es veterinario")
     fecha = models.DateField(default=datetime.now, verbose_name="Fecha")
 
     def __str__(self):
-        return self.visitante.nombre + ' - ' + str(self.fecha)
+        return self.nombre + ' - ' + str(self.fecha)
 
 
 class Evento(models.Model):
@@ -128,6 +135,7 @@ class Evento(models.Model):
 
 
 class Informacion(models.Model):
+    foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
     title = models.CharField(max_length=50, verbose_name="Titulo", null=True, blank=True)
     texto = models.CharField(max_length=900, verbose_name="Texto")
 

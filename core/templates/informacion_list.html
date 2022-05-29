@@ -11,33 +11,12 @@
 {% endblock %}
 
 {% block rows %}
-    {% comment %}    {% if object_list %}
-        {% for obj in object_list %}
-            <tr>
-                <td>{{ obj.title }}</td>
-                <td>{{ obj.texto }}</td>
-                <td>
-                    <a href="{% url 'informacion-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'informacion-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
-                </td>
-            </tr>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td> No hay datos para mostrar</td>
-        </tr>
-    {% endif %}{% endcomment %}
-
     {% if object_list %}
-        {% for obj in object_list %}
+        {% comment %}        {% for obj in object_list %}
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-              <span class="card-title">
-                    {{ obj.title }}
-                </span>
+                        <span class="card-title">{{ obj.title }}</span>
                     </div>
                     <div class="card-body">
                         <span>{{ obj.texto }}</span>
@@ -47,6 +26,30 @@
                                 class="mdi mdi-square-edit-outline"></i> Editar</a>
                         <a href="{% url 'informacion-delete' obj.pk %}" class="btn btn-danger btn-sm circular"><i
                                 class="mdi mdi-trash-can-outline"></i> Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}{% endcomment %}
+        {% for obj in object_list %}
+            <div class="card w-100 shadow-none border-bottom rounded-0 card-s-cart">
+                <div class="row no-gutters">
+                    <div class="col-4 col-sm-3 my-auto">
+                        <img class="card-img circular" src="{{ obj.foto.url }}"
+                             alt="Suresh Dasari Card">
+                    </div>
+                    <div class="col-8 col-sm-9">
+                        <div class="card-body ">
+                            <h5 class=" truncate-1">{{ obj.title }}</h5>
+                            <span>{{ obj.texto }}</span>
+                            <br>
+                            <div class="text-right">
+                                <a href="{% url 'informacion-update' obj.pk %}" class="btn btn-warning btn-sm circular"><i
+                                        class="mdi mdi-square-edit-outline"></i> Editar</a>
+                                <a href="{% url 'informacion-delete' obj.pk %}"
+                                   class="btn btn-danger btn-sm circular"><i
+                                        class="mdi mdi-trash-can-outline"></i> Eliminar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
