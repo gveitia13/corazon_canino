@@ -94,17 +94,6 @@ class Ficha(models.Model):
         super(Ficha, self).save(*args, **kwargs)
 
 
-# class Visitante(models.Model):
-#     nombre = models.CharField(max_length=255, validators=[SOLO_TEXTO_REGEX], verbose_name="Nombre")
-#     apellido = models.CharField(max_length=255, verbose_name="Apellido")
-#     edad = models.IntegerField(null=True, blank=True, verbose_name="Edad (opcional)")
-#     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono")
-#     veterinario = models.BooleanField(default=True, verbose_name="Es veterinario")
-#
-#     def __str__(self):
-#         return self.nombre
-
-
 class Visita(models.Model):
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
     apellido = models.CharField(max_length=255, verbose_name="Apellidos")
@@ -183,3 +172,11 @@ class Asociado(models.Model):
 
     def link_foto(self):
         return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
+
+
+class Enfermedad(models.Model):
+    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    descripcion = models.CharField(max_length=900, verbose_name='Descripción')
+
+    def __str__(self):
+        return self.nombre

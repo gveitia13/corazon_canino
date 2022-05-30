@@ -34,4 +34,9 @@ urlpatterns = [
     path('asociado/add/', AsociadoCreateView.as_view(), name='asociado-add'),
     path('asociado/update/<int:pk>/', AsociadoUpdateView.as_view(), name='asociado-update'),
     path('asociado/delete/<int:pk>/', AsociadoDeleteView.as_view(), name='asociado-delete'),
+    # Enfermedad
+    path('enfermedad/list/', EnfermedadListView.as_view(), name='enfermedad-list'),
+    path('enfermedad/add/', EnfermedadCreateView.as_view(), name='enfermedad-add'),
+    path('enfermedad/update/<int:pk>/', EnfermedadUpdateView.as_view(), name='enfermedad-update'),
+    path('enfermedad/delete/<int:pk>/', EnfermedadDeleteView.as_view(), name='enfermedad-delete'),
 ]

@@ -5,8 +5,8 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
-from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm
-from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado
+from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm
+from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad
 
 
 class Startpage(generic.TemplateView):
@@ -461,4 +461,63 @@ class AsociadoDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['entity'] = 'Asociado'
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar Asociado'
+        return context
+
+
+# CRUD Enfermedad
+class EnfermedadListView(generic.ListView, ):
+    model = Enfermedad
+    template_name = 'enfermedad_list.html'
+    queryset = Enfermedad.objects.all()
+    success_url = reverse_lazy('enfermedad-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('enfermedad-add')
+        context['entity'] = 'Enfermedad'
+        context['title'] = 'Enfermedades más comunes'
+        return context
+
+
+class EnfermedadCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Enfermedad
+    template_name = 'form.html'
+    form_class = EnfermedadForm
+    success_url = reverse_lazy('enfermedad-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('enfermedad-add')
+        context['entity'] = 'Enfermedad'
+        context['list_url'] = self.success_url
+        context['title'] = 'Registrar Enfermedad'
+        return context
+
+
+class EnfermedadUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Enfermedad
+    template_name = 'form.html'
+    form_class = EnfermedadForm
+    success_url = reverse_lazy('enfermedad-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('enfermedad-add')
+        context['entity'] = 'Enfermedad'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar Enfermedad'
+        return context
+
+
+class EnfermedadDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Enfermedad
+    template_name = 'delete.html'
+    success_url = reverse_lazy('enfermedad-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('enfermedad-add')
+        context['entity'] = 'Enfermedad'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Enfermedad'
         return context
