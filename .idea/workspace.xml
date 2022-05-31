@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/templates/denuncia_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proyecto_canino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto_canino.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/denuncia_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/vacuna_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/vacuna_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/visita_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/visita_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/function.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cards_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cards_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +56,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -120,7 +120,10 @@
       <workItem from="1653876999886" duration="592000" />
       <workItem from="1653889433593" duration="4853000" />
       <workItem from="1653957029330" duration="1541000" />
-      <workItem from="1653983533665" duration="4278000" />
+      <workItem from="1653983533665" duration="4348000" />
+      <workItem from="1653992443128" duration="26000" />
+      <workItem from="1653992746279" duration="4323000" />
+      <workItem from="1653996548283" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -213,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653896072320</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="denuncia">
+      <created>1653989395125</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1653989395125</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +242,7 @@
     <MESSAGE value="visitas&#10;evento&#10;informacion&#10;fichas" />
     <MESSAGE value="contacto&#10;asociados" />
     <MESSAGE value="enfermedades" />
-    <option name="LAST_COMMIT_MESSAGE" value="enfermedades" />
+    <MESSAGE value="denuncia" />
+    <option name="LAST_COMMIT_MESSAGE" value="denuncia" />
   </component>
 </project>

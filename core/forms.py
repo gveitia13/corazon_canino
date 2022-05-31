@@ -3,7 +3,7 @@ from datetime import datetime
 from django import forms
 from django.forms import ModelForm
 
-from core.models import Ficha, Visita, Evento, Informacion, Enfermedad, Denuncia
+from core.models import Ficha, Visita, Evento, Informacion, Enfermedad, Denuncia, Vacuna, Desparasitacion, Medicamento
 
 
 class FichaForm(ModelForm):
@@ -118,6 +118,64 @@ class DenunciaForm(ModelForm):
         exclude = ('date_creation',)
         widgets = {
             ('descripcion', 'caracteristicas'): forms.Textarea(
+                attrs={
+                    'placeholder': '',
+                    'rows': 3,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+        }
+
+
+class VacunaForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Vacuna
+        fields = '__all__'
+        widgets = {
+            'fecha': forms.DateInput(
+                attrs={
+                    'class': 'circular',
+                    'type': 'date',
+                }
+            ),
+            'fecha_siguiente': forms.DateInput(
+                attrs={
+                    'class': 'circular',
+                    'type': 'date',
+                }
+            ),
+        }
+        
+class DesparasitacionForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Desparasitacion
+        fields = '__all__'
+        widgets = {
+            'fecha': forms.DateInput(
+                attrs={
+                    'class': 'circular',
+                    'type': 'date',
+                }
+            ),
+        }
+
+
+class MedicamentoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Medicamento
+        fields = '__all__'
+        widgets = {
+            'descripcion': forms.Textarea(
                 attrs={
                     'placeholder': '',
                     'rows': 3,

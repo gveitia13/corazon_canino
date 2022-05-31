@@ -5,8 +5,8 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
-from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm
-from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia
+from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm, VacunaForm, DesparasitacionForm, MedicamentoForm
+from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia, Vacuna, Desparasitacion, Medicamento
 
 
 class Startpage(generic.TemplateView):
@@ -579,4 +579,182 @@ class DenunciaDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['entity'] = 'Denuncia'
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar Denuncia'
+        return context
+
+
+# CRUD Vacuna
+class VacunaListView(LoginRequiredMixin, generic.ListView, ):
+    model = Vacuna
+    template_name = 'vacuna_list.html'
+    queryset = Vacuna.objects.all()
+    success_url = reverse_lazy('vacuna-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('vacuna-add')
+        context['entity'] = 'Vacuna'
+        context['title'] = 'Listados de vacunas'
+        return context
+
+
+class VacunaCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Vacuna
+    template_name = 'form.html'
+    form_class = VacunaForm
+    success_url = reverse_lazy('vacuna-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('vacuna-add')
+        context['entity'] = 'Vacuna'
+        context['list_url'] = self.success_url
+        context['title'] = 'Crear Vacuna'
+        return context
+
+
+class VacunaUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Vacuna
+    template_name = 'form.html'
+    form_class = VacunaForm
+    success_url = reverse_lazy('vacuna-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('vacuna-add')
+        context['entity'] = 'Vacuna'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar Vacuna'
+        return context
+
+
+class VacunaDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Vacuna
+    template_name = 'delete.html'
+    success_url = reverse_lazy('vacuna-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('vacuna-add')
+        context['entity'] = 'Vacuna'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Vacuna'
+        return context
+
+
+# CRUD Desparacitacion
+class DesparasitacionListView(LoginRequiredMixin, generic.ListView, ):
+    model = Desparasitacion
+    template_name = 'desparasitacion_list.html'
+    queryset = Desparasitacion.objects.all()
+    success_url = reverse_lazy('desparasitacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('desparasitacion-add')
+        context['entity'] = 'Desparasitacion'
+        context['title'] = 'Listados de desparasitaciones'
+        return context
+
+
+class DesparasitacionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Desparasitacion
+    template_name = 'form.html'
+    form_class = DesparasitacionForm
+    success_url = reverse_lazy('desparasitacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('desparasitacion-add')
+        context['entity'] = 'Desparasitacion'
+        context['list_url'] = self.success_url
+        context['title'] = 'Registrar desparasitacion'
+        return context
+
+
+class DesparasitacionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Desparasitacion
+    template_name = 'form.html'
+    form_class = DesparasitacionForm
+    success_url = reverse_lazy('desparasitacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('desparasitacion-add')
+        context['entity'] = 'Desparasitacion'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar desparasitacion'
+        return context
+
+
+class DesparasitacionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Desparasitacion
+    template_name = 'delete.html'
+    success_url = reverse_lazy('desparasitacion-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('desparasitacion-add')
+        context['entity'] = 'Desparasitacion'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar desparasitacion'
+        return context
+
+# CRUD Medicamento
+
+
+class MedicamentoListView(generic.ListView, ):
+    model = Medicamento
+    template_name = 'medicamento_list.html'
+    queryset = Medicamento.objects.all()
+    success_url = reverse_lazy('medicamento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('medicamento-add')
+        context['entity'] = 'Medicamento'
+        context['title'] = 'Medicamentos disponibles'
+        return context
+
+
+class MedicamentoCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Medicamento
+    template_name = 'form.html'
+    form_class = MedicamentoForm
+    success_url = reverse_lazy('medicamento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('medicamento-add')
+        context['entity'] = 'Medicamento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Registrar medicamento'
+        return context
+
+
+class MedicamentoUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Medicamento
+    template_name = 'form.html'
+    form_class = MedicamentoForm
+    success_url = reverse_lazy('medicamento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('medicamento-add')
+        context['entity'] = 'Medicamento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar medicamento'
+        return context
+
+
+class MedicamentoDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Medicamento
+    template_name = 'delete.html'
+    success_url = reverse_lazy('medicamento-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('medicamento-add')
+        context['entity'] = 'Medicamento'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar medicamento'
         return context

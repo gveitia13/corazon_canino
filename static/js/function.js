@@ -23,6 +23,8 @@ $(function () {
     changeSidebar('.medicamento-sidebar')
   if (window.location.pathname.includes('denuncia'))
     changeSidebar('.denuncia-sidebar')
+  if (window.location.pathname.includes('desparacitacion'))
+    changeSidebar('.desparacitacion-sidebar')
 })
 let changeSidebar = function (nav_treeview) {
     let father = document.querySelector(nav_treeview)
@@ -66,26 +68,25 @@ let changeSidebar = function (nav_treeview) {
         danger: {
           text: 'No',
           btnClass: 'bg-gradient-danger circular',
-          action: () => {
-          }
+          action: () => {}
         }
       }
     })
   },
   //For add | update using jQuery with ajax
   submit_with_ajax = (url, parameters, callback) =>
-    ajaxFunction(url, parameters, callback),
+  ajaxFunction(url, parameters, callback),
   //Auxiliary method: submit with ajax and jQuery
   ajaxFunction = function (url, parameters, callback, async = true) {
     $.ajax({
-      url: url,
-      type: 'POST',
-      data: parameters,
-      dataType: 'json',
-      processData: false,
-      contentType: false,
-      async: async
-    })
+        url: url,
+        type: 'POST',
+        data: parameters,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        async: async
+      })
       .done(function (data) {
         console.log(data)
         if (!data.hasOwnProperty('error')) {
@@ -99,8 +100,7 @@ let changeSidebar = function (nav_treeview) {
       .fail(function (jqXHR, textStatus, errorThrown) {
         alert(textStatus + ': ' + errorThrown)
       })
-      .always(function (data) {
-      })
+      .always(function (data) {})
   },
   testFetch = () => console.log('fetch'),
   //Jquery confirm alert
@@ -142,4 +142,4 @@ let changeSidebar = function (nav_treeview) {
     })
   },
   truncate = (str, len, end = '..') =>
-    str.replace(new RegExp('(.{' + len + '}).*'), '$1' + end + '')
+  str.replace(new RegExp('(.{' + len + '}).*'), '$1' + end + '')

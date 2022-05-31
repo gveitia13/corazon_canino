@@ -2,11 +2,8 @@
 {% load static %}
 
 {% block columns %}
-
-    <td>Evidencia</td>
+    <td>Nombre</td>
     <td>Descripción</td>
-    <td>Características</td>
-    <td>Fecha</td>
     <td>Opciones</td>
 {% endblock %}
 
@@ -14,14 +11,12 @@
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
-                <td>{{ obj.link_foto }}</td>
+                <td>{{ obj.nombre }}</td>
                 <td>{{ obj.descripcion }}</td>
-                <td>{{ obj.caracteristicas }}</td>
-                <td>{{ obj.date_creation|date:'d-m-Y' }}</td>
                 <td>
-                    <a href="{% url 'denuncia-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                    <a href="{% url 'medicamento-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
                             class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'denuncia-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                    <a href="{% url 'medicamento-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
                             class="mdi mdi-trash-can-outline"></i></a>
                 </td>
             </tr>

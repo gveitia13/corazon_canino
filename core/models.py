@@ -2,7 +2,7 @@ from datetime import datetime
 
 import qrcode
 from crum import get_current_request
-from django.core.validators import RegexValidator, MinLengthValidator
+from django.core.validators import RegexValidator, MinLengthValidator, MinValueValidator
 from django.db import models
 from django.forms import model_to_dict
 from django.urls import reverse_lazy
@@ -21,12 +21,18 @@ class Ficha(models.Model):
     color = models.CharField(max_length=255, verbose_name="Color")
     raza = models.CharField(max_length=255, verbose_name="Raza")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
-    sexo = models.CharField(max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
-    esterilizado = models.BooleanField(default=False, verbose_name="Esterilizado")
-    peso = models.FloatField(verbose_name="Peso en KG")
-    enfermedades = models.CharField(max_length=255, verbose_name='Enfermedades o lesiones', null=True, blank=True)
-    qr = models.CharField(max_length=900, blank=True, null=True, verbose_name="Código Qr")
-    date_creation = models.DateField(auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
+    sexo = models.CharField(
+        max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
+    esterilizado = models.BooleanField(
+        default=False, verbose_name="Esterilizado")
+    peso = models.FloatField(verbose_name="Peso en KG", validators=[
+                             MinValueValidator(0, 'Debe ser positivo')])
+    enfermedades = models.CharField(
+        max_length=255, verbose_name='Enfermedades o lesiones', null=True, blank=True)
+    qr = models.CharField(max_length=900, blank=True,
+                          null=True, verbose_name="Código Qr")
+    date_creation = models.DateField(
+        auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
     def __str__(self):
         return self.nombre
@@ -83,7 +89,8 @@ class Ficha(models.Model):
                 'link': f"http://{request.get_host()}/ficha/update/{self.pk}/",
             })
             qr.make(fit=True)
-            imagen = qr.make_image(fill_color="black", back_color="white").convert('RGB')
+            imagen = qr.make_image(
+                fill_color="black", back_color="white").convert('RGB')
             if Ficha.objects.exists():
                 pk = Ficha.objects.last().pk + 1
             else:
@@ -97,12 +104,16 @@ class Ficha(models.Model):
 class Visita(models.Model):
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
     apellido = models.CharField(max_length=255, verbose_name="Apellidos")
-    edad = models.IntegerField(null=True, blank=True, verbose_name="Edad (opcional)")
+    edad = models.IntegerField(
+        null=True, blank=True, verbose_name="Edad (opcional)")
     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
                                 validators=[TELEFONO_REGEX])
-    ci = models.CharField(max_length=11, validators=[MinLengthValidator(11)], verbose_name='Carnet')
-    organizacion = models.CharField(max_length=255, verbose_name="Organización", null=True, blank=True)
-    veterinario = models.BooleanField(default=True, verbose_name="Es veterinario")
+    ci = models.CharField(max_length=11, validators=[
+                          MinLengthValidator(11)], verbose_name='Carnet')
+    organizacion = models.CharField(
+        max_length=255, verbose_name="Organización", null=True, blank=True)
+    veterinario = models.BooleanField(
+        default=True, verbose_name="Es veterinario")
     fecha = models.DateField(default=datetime.now, verbose_name="Fecha")
 
     def __str__(self):
@@ -129,7 +140,8 @@ class Evento(models.Model):
 
 class Informacion(models.Model):
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
-    title = models.CharField(max_length=50, verbose_name="Titulo", null=True, blank=True)
+    title = models.CharField(
+        max_length=50, verbose_name="Titulo", null=True, blank=True)
     texto = models.CharField(max_length=900, verbose_name="Texto")
 
     def __str__(self):
@@ -146,8 +158,10 @@ class Contacto(models.Model):
         ('f4', 'Facultad 4'),
         ('fte', 'Facultad FTE'),
         ('citec', 'Facultad CITEC'),
+        ('otro', 'Otro'),
     ))
-    cargo = models.CharField(max_length=150, verbose_name='Cargo', null=True, blank=True)
+    cargo = models.CharField(
+        max_length=150, verbose_name='Cargo', null=True, blank=True)
     telefono = models.CharField(verbose_name='Teléfono', max_length=20,
                                 help_text='Puede empezar con +, el resto solo dígitos',
                                 validators=[TELEFONO_REGEX])
@@ -184,10 +198,14 @@ class Enfermedad(models.Model):
 
 class Denuncia(models.Model):
     descripcion = models.CharField(verbose_name='Descripción', max_length=500)
-    ubicacion = models.CharField(verbose_name='Ubicación (opcional)', max_length=255, null=True, blank=True)
-    caracteristicas = models.CharField(verbose_name='Características del animal', max_length=255, )
-    foto = models.ImageField(upload_to='fotos/', verbose_name="Evidencia (foto)", )
-    date_creation = models.DateField(auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
+    ubicacion = models.CharField(
+        verbose_name='Ubicación (opcional)', max_length=255, null=True, blank=True)
+    caracteristicas = models.CharField(
+        verbose_name='Características del animal', max_length=255, )
+    foto = models.ImageField(
+        upload_to='fotos/', verbose_name="Evidencia (foto)", )
+    date_creation = models.DateField(
+        auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
     def __str__(self):
         return self.descripcion
@@ -201,3 +219,49 @@ class Denuncia(models.Model):
 
     def link_foto(self):
         return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
+
+
+class Vacuna(models.Model):
+    ficha = models.ForeignKey(
+        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a vacunar',)
+    fecha = models.DateField(
+        verbose_name='Fecha de vacunación', default=datetime.utcnow)
+    producto = models.CharField(verbose_name='Producto', max_length=100)
+    fecha_siguiente = models.DateField(
+        verbose_name='Fecha de la próxima vacuna')
+
+    def __str__(self):
+        return self.producto
+
+    class Meta:
+        ordering = ['-fecha']
+
+
+class Desparasitacion(models.Model):
+    ficha = models.ForeignKey(
+        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a desparasitar',)
+    fecha = models.DateField(
+        verbose_name='Fecha de vacunación', default=datetime.utcnow)
+    tipo = models.CharField(max_length=100, choices=(
+        ('externa', 'Desparasitación externa'),
+        ('interna', 'Desparasitación interna'),), verbose_name='Tipo')
+    peso = models.FloatField(verbose_name='Peso', validators=[
+                             MinValueValidator(0, 'Debe ser positivo')])
+
+    def __str__(self):
+        return self.tipo
+    
+    class Meta:
+        ordering = ('-fecha',)
+    
+
+class Medicamento(models.Model):
+    nombre = models.CharField(max_length=200, verbose_name='Nombre')
+    descripcion = models.CharField(max_length=500, verbose_name='Descripcion')
+    cantidad = models.PositiveIntegerField(verbose_name='Cantidad')
+    
+    def __str__(self):
+        return self.nombre
+    
+    
+    

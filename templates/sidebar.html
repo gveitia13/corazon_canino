@@ -28,24 +28,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link vacuna-sidebar">
-                        <i class="nav-icon mdi mdi-contacts-outline"></i>
+                    <a href="{% url 'vacuna-list' %}" class="nav-link vacuna-sidebar">
+                        <i class="nav-icon mdi mdi-needle"></i>
                         <p>
                             Vacunas
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link medicamento-sidebar">
-                        <i class="nav-icon mdi mdi-pill"></i>
+                    <a href="{% url 'desparasitacion-list' %}" class="nav-link desparasitacion-sidebar">
+                        <i class="nav-icon mdi mdi-bug"></i>
                         <p>
-                            Medicamentos
+                            Desparasitaciones
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'denuncia-list' %}" class="nav-link denuncia-sidebar">
-                        <i class="nav-icon mdi mdi-email-alert"></i>
+                        <i class="nav-icon mdi mdi-chat-alert"></i>
                         <p>
                             Denuncias
                         </p>
@@ -76,11 +76,19 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{% url 'medicamento-list' %}" class="nav-link medicamento-sidebar">
+                        <i class="nav-icon mdi mdi-pill"></i>
+                        <p>
+                            Medicamentos
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-header">Colaboradores</li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
-                            <i class="nav-icon mdi mdi-file-document "></i>
+                            <i class="nav-icon mdi mdi-account-group"></ "></i>
                             <p>
                                 Visitas
                             </p>
@@ -89,7 +97,7 @@
                 {% endif %}
                 <li class="nav-item">
                     <a href="{% url 'asociado-list' %}" class="nav-link asociado-sidebar">
-                        <i class="nav-icon mdi mdi-account-supervisor"></i>
+                        <i class="nav-icon mdi mdi-account-multiple-check"></i>
                         <p>
                             Asociados
                         </p>
@@ -97,7 +105,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'contacto-list' %}" class="nav-link contacto-sidebar">
-                        <i class="nav-icon mdi mdi-contacts"></i>
+                        <i class="nav-icon mdi mdi-account-multiple"></i>
                         <p>
                             Contactos
                         </p>

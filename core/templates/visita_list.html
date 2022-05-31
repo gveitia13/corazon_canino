@@ -16,7 +16,7 @@
         {% for obj in object_list %}
             <tr>
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
-                <td>{{ obj.fecha }}</td>
+                <td>{{ obj.fecha|date:'d-m-Y' }}</td>
                 {% if obj.veterinario %}
                     <td>Si</td>
                 {% else %}
