@@ -39,4 +39,9 @@ urlpatterns = [
     path('enfermedad/add/', EnfermedadCreateView.as_view(), name='enfermedad-add'),
     path('enfermedad/update/<int:pk>/', EnfermedadUpdateView.as_view(), name='enfermedad-update'),
     path('enfermedad/delete/<int:pk>/', EnfermedadDeleteView.as_view(), name='enfermedad-delete'),
+    # Denuncia
+    path('denuncia/list/', DenunciaListView.as_view(), name='denuncia-list'),
+    path('denuncia/add/', DenunciaCreateView.as_view(), name='denuncia-add'),
+    path('denuncia/update/<int:pk>/', DenunciaUpdateView.as_view(), name='denuncia-update'),
+    path('denuncia/delete/<int:pk>/', DenunciaDeleteView.as_view(), name='denuncia-delete'),
 ]

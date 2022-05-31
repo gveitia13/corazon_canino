@@ -1,0 +1,34 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block columns %}
+
+    <td>Evidencia</td>
+    <td>Descripción</td>
+    <td>Características</td>
+    <td>Fecha</td>
+    <td>Opciones</td>
+{% endblock %}
+
+{% block rows %}
+    {% if object_list %}
+        {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.link_foto }}</td>
+                <td>{{ obj.descripcion }}</td>
+                <td>{{ obj.caracteristicas }}</td>
+                <td>{{ obj.date_creation }}</td>
+                <td>
+                    <a href="{% url 'denuncia-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                            class="mdi mdi-square-edit-outline"></i></a>
+                    <a href="{% url 'denuncia-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                            class="mdi mdi-trash-can-outline"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td> No hay datos para mostrar</td>
+        </tr>
+    {% endif %}
+{% endblock %}

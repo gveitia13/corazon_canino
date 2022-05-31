@@ -3,7 +3,7 @@ from datetime import datetime
 from django import forms
 from django.forms import ModelForm
 
-from core.models import Ficha, Visita, Evento, Informacion, Enfermedad
+from core.models import Ficha, Visita, Evento, Informacion, Enfermedad, Denuncia
 
 
 class FichaForm(ModelForm):
@@ -14,6 +14,16 @@ class FichaForm(ModelForm):
         model = Ficha
         fields = '__all__'
         exclude = ['date_creation', 'qr', ]
+        widgets = {
+            'enfermedades': forms.Textarea(
+                attrs={
+                    'placeholder': 'Enfermedades que padece',
+                    'rows': 5,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+        }
 
 
 class VisitaForm(ModelForm):
@@ -91,6 +101,26 @@ class EnfermedadForm(ModelForm):
                 attrs={
                     'placeholder': 'Escriba la descripción',
                     'rows': 7,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+        }
+
+
+class DenunciaForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Denuncia
+        fields = '__all__'
+        exclude = ('date_creation',)
+        widgets = {
+            ('descripcion', 'caracteristicas'): forms.Textarea(
+                attrs={
+                    'placeholder': '',
+                    'rows': 3,
                     'cols': 3,
                     'class': 'circular'
                 }

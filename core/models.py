@@ -180,3 +180,24 @@ class Enfermedad(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Denuncia(models.Model):
+    descripcion = models.CharField(verbose_name='Descripción', max_length=500)
+    ubicacion = models.CharField(verbose_name='Ubicación (opcional)', max_length=255, null=True, blank=True)
+    caracteristicas = models.CharField(verbose_name='Características del animal', max_length=255, )
+    foto = models.ImageField(upload_to='fotos/', verbose_name="Evidencia (foto)", )
+    date_creation = models.DateField(auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
+
+    def __str__(self):
+        return self.descripcion
+
+    class Meta:
+        ordering = ['date_creation']
+
+    def mostrar_foto(self):
+        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+                                                        'cursor-zoom-in">')
+
+    def link_foto(self):
+        return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')

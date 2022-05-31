@@ -21,6 +21,8 @@ $(function () {
     changeSidebar('.vacuna-sidebar')
   if (window.location.pathname.includes('medicamento'))
     changeSidebar('.medicamento-sidebar')
+  if (window.location.pathname.includes('denuncia'))
+    changeSidebar('.denuncia-sidebar')
 })
 let changeSidebar = function (nav_treeview) {
     let father = document.querySelector(nav_treeview)

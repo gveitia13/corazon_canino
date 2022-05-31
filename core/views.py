@@ -5,8 +5,8 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
-from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm
-from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad
+from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm
+from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia
 
 
 class Startpage(generic.TemplateView):
@@ -520,4 +520,63 @@ class EnfermedadDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['entity'] = 'Enfermedad'
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar Enfermedad'
+        return context
+
+
+# CRUD Denuncia
+class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
+    model = Denuncia
+    template_name = 'denuncia_list.html'
+    queryset = Denuncia.objects.all()
+    success_url = reverse_lazy('denuncia-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('denuncia-add')
+        context['entity'] = 'Denuncia'
+        context['title'] = 'Listados de denuncias'
+        return context
+
+
+class DenunciaCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Denuncia
+    template_name = 'form.html'
+    form_class = DenunciaForm
+    success_url = reverse_lazy('denuncia-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('denuncia-add')
+        context['entity'] = 'Denuncia'
+        context['list_url'] = self.success_url
+        context['title'] = 'Crear Denuncia'
+        return context
+
+
+class DenunciaUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Denuncia
+    template_name = 'form.html'
+    form_class = DenunciaForm
+    success_url = reverse_lazy('denuncia-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('denuncia-add')
+        context['entity'] = 'Denuncia'
+        context['list_url'] = self.success_url
+        context['title'] = 'Editar Denuncia'
+        return context
+
+
+class DenunciaDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Denuncia
+    template_name = 'delete.html'
+    success_url = reverse_lazy('denuncia-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['create_url'] = reverse_lazy('denuncia-add')
+        context['entity'] = 'Denuncia'
+        context['list_url'] = self.success_url
+        context['title'] = 'Eliminar Denuncia'
         return context
