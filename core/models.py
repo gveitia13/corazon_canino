@@ -26,7 +26,7 @@ class Ficha(models.Model):
     esterilizado = models.BooleanField(
         default=False, verbose_name="Esterilizado")
     peso = models.FloatField(verbose_name="Peso en KG", validators=[
-                             MinValueValidator(0, 'Debe ser positivo')])
+        MinValueValidator(0, 'Debe ser positivo')])
     enfermedades = models.CharField(
         max_length=255, verbose_name='Enfermedades o lesiones', null=True, blank=True)
     qr = models.CharField(max_length=900, blank=True,
@@ -109,7 +109,7 @@ class Visita(models.Model):
     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
                                 validators=[TELEFONO_REGEX])
     ci = models.CharField(max_length=11, validators=[
-                          MinLengthValidator(11)], verbose_name='Carnet')
+        MinLengthValidator(11)], verbose_name='Carnet')
     organizacion = models.CharField(
         max_length=255, verbose_name="Organización", null=True, blank=True)
     veterinario = models.BooleanField(
@@ -223,7 +223,7 @@ class Denuncia(models.Model):
 
 class Vacuna(models.Model):
     ficha = models.ForeignKey(
-        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a vacunar',)
+        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a vacunar', )
     fecha = models.DateField(
         verbose_name='Fecha de vacunación', default=datetime.utcnow)
     producto = models.CharField(verbose_name='Producto', max_length=100)
@@ -239,29 +239,26 @@ class Vacuna(models.Model):
 
 class Desparasitacion(models.Model):
     ficha = models.ForeignKey(
-        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a desparasitar',)
+        Ficha, on_delete=models.CASCADE, verbose_name='Ficha a desparasitar', )
     fecha = models.DateField(
         verbose_name='Fecha de vacunación', default=datetime.utcnow)
     tipo = models.CharField(max_length=100, choices=(
         ('externa', 'Desparasitación externa'),
         ('interna', 'Desparasitación interna'),), verbose_name='Tipo')
     peso = models.FloatField(verbose_name='Peso', validators=[
-                             MinValueValidator(0, 'Debe ser positivo')])
+        MinValueValidator(0, 'Debe ser positivo')])
 
     def __str__(self):
         return self.tipo
-    
+
     class Meta:
         ordering = ('-fecha',)
-    
+
 
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     descripcion = models.CharField(max_length=500, verbose_name='Descripcion')
     cantidad = models.PositiveIntegerField(verbose_name='Cantidad')
-    
+
     def __str__(self):
         return self.nombre
-    
-    
-    

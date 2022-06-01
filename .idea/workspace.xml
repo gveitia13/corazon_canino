@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/migrations/0010_denuncia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0011_vacuna.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0012_alter_contacto_area_alter_ficha_peso_desparasitacion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0013_medicamento.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/denuncia_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/vacuna_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/vacuna_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/visita_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/visita_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cards_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cards_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +117,8 @@
       <workItem from="1653983533665" duration="4348000" />
       <workItem from="1653992443128" duration="26000" />
       <workItem from="1653992746279" duration="4323000" />
-      <workItem from="1653996548283" duration="16000" />
+      <workItem from="1653996548283" duration="141000" />
+      <workItem from="1654030030036" duration="2400000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -223,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653989395125</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="medicamentos, vacunas, desparasitacion">
+      <created>1653996665975</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1653996665975</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +245,7 @@
     <MESSAGE value="contacto&#10;asociados" />
     <MESSAGE value="enfermedades" />
     <MESSAGE value="denuncia" />
-    <option name="LAST_COMMIT_MESSAGE" value="denuncia" />
+    <MESSAGE value="medicamentos, vacunas, desparasitacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="medicamentos, vacunas, desparasitacion" />
   </component>
 </project>
