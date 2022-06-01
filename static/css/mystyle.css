@@ -81,10 +81,6 @@ ul.nav-treeview li.nav-item > a, ul.nav-treeview li.nav-item > a i.nav-icon {
     text-decoration: underline !important;
 }
 
-.table > thead > tr > th {
-    border-bottom: solid 1px #000 !important;
-}
-
 .modal-dialog.modal-dialog-top {
     margin-top: 0 !important
 }

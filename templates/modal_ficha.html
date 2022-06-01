@@ -1,8 +1,8 @@
 {% load static %}
 <!--    modal-->
-<div class="modal fade modal-card " id="ficha-info" tabindex="-1" role="dialog" aria-labelledby="user-info"
-     aria-hidden="true" style="min-width: 350px;height: auto;padding: 0" data-target="#user-info">
-    <div class="modal-dialog modal-dialog-popout modal-dialog-scrollable modal" role="document">
+<div class="modal fade modal-card  " id="ficha-info" tabindex="-1" role="dialog" aria-labelledby="user-info"
+     aria-hidden="true" style="height: auto;padding: 0" data-target="#user-info">
+    <div class="modal-dialog modal-lg modal-dialog-popout modal-dialog-scrollable modal" role="document">
         <div class="modal-content circular border-0 shadow-none">
             <div class="modal-header border-bottom-0 circular-top py-2">
                 <h5 class="modal-title user-select-none">
@@ -28,61 +28,84 @@
                                  alt="User Avatar" id="qr-image">
                         </div>
                     </div>
-                    <div class="card-body circular-bottom">
+                    <div class="card-body px-0 circular-bottom">
                         <div class="row">
                             <div class="col-6">
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Nombre:</span>
-                                    <span id="modal-name" class="text-muted"></span>
+                                    <strong class="d-sm-inline-block d-none">Nombre:</strong>
+                                    <span id="modal-name" class=""></span>
                                 </div>
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Sexo: </span>
-                                    <span class="text-muted" id="modal-sexo"> </span>
+                                    <strong class="d-sm-inline-block d-none">Sexo: </strong>
+                                    <span class="" id="modal-sexo"> </span>
                                 </div>
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Esterilizado: </span>
-                                    <span class="text-muted" id="modal-esterilizado"> </span>
+                                    <strong class="d-sm-inline-block d-none">Esterilizado: </strong>
+                                    <span id="modal-esterilizado"> </span>
                                 </div>
-
-                                {% comment %}                                <div class="icheck-primary" style="opacity: 1">
-                                    <input type="checkbox" disabled id="modal-esterilizado"/>
-                                    <label for="is_staff" style="opacity: 1">Esterilizado</label>
-                                </div>{% endcomment %}
                             </div>
                             <div class="col-6">
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Color:</span>
-                                    <span class="text-muted" id="modal-color"> </span>
+                                    <strong class="d-sm-inline-block d-none">Color:</strong>
+                                    <span id="modal-color"> </span>
                                 </div>
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Peso:</span>
-                                    <span class="text-muted" id="modal-peso"> -------</span>
+                                    <strong class="d-sm-inline-block d-none">Peso:</strong>
+                                    <span  id="modal-peso"> -------</span>
                                 </div>
                                 <div class="truncate-1">
-                                    <span class="d-sm-inline-block d-none">Raza:</span>
-                                    <span class="text-muted" id="modal-raza"> -------</span>
+                                    <strong class="d-sm-inline-block d-none">Raza:</strong>
+                                    <span  id="modal-raza"> -------</span>
                                 </div>
                             </div>
-                            {% comment %}                            <div class="col-12 user-groups">
-                                <span class="d-inline-block"><i class="mdi mdi-account-group-outline"></i>
-                                <span class="d-sm-inline-block d-none">Groups:</span>
-                                <span id="groups"></span></span>
-                            </div>
-                            <div class="col-12 user-biography pt-1">
-                                <span class="d-inline-block"><i class="mdi mdi-account-card-details-outline"></i>
-                                <span class="d-sm-inline-block d-none">About me:</span>
-                                <span class="text-muted" id="about"> bla bla</span></span>
-                            </div>{% endcomment %}
                             <div class="col-12">
                                 <div class="">
-                                    <span class="d-sm-inline-block d-none">Enfermedades: </span>
-                                    <span class="text-muted" id="modal-enfermedades"> </span>
+                                    <strong class="d-sm-inline-block d-none">Enfermedades: </strong>
+                                    <span  id="modal-enfermedades"> </span>
                                 </div>
+                            </div>
+                            <div class="rayita-light"></div>
+                            <div class="col-12">
+                                <h5>Vacunas</h5>
+                                <table class="table table-bordered table-hover table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Fecha Siguiente</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tabla-vacuna">
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-12">
+                                <h5>Desparasitación</h5>
+                                <table class="table table-bordered table-hover table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Tipo</th>
+                                        <th scope="col">Peso</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tabla-desparasitacion">
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

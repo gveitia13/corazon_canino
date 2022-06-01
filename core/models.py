@@ -43,6 +43,11 @@ class Ficha(models.Model):
         json['sexo'] = 'Macho' if self.sexo == 'm' else 'Hembra'
         json['esterilizado'] = 'Si' if self.esterilizado else 'No'
         json['enfermedades'] = 'Ninguna' if not self.enfermedades else self.enfermedades
+        json['vacunas'] = [i.toJSON() for i in Vacuna.objects.filter(ficha_id=self.pk)] if Vacuna.objects.filter(
+            ficha_id=self.pk).exists() else []
+        json['desparasitaciones'] = [i.toJSON() for i in Desparasitacion.objects.filter(
+            ficha_id=self.pk)] if Desparasitacion.objects.filter(
+            ficha_id=self.pk).exists() else []
         return json
 
     def mostrar_foto(self):
@@ -236,6 +241,13 @@ class Vacuna(models.Model):
     class Meta:
         ordering = ['-fecha']
 
+    def toJSON(self):
+        json = model_to_dict(self)
+        json['ficha'] = str(self.ficha)
+        json['fecha'] = self.fecha
+        json['fecha_siguiente'] = self.fecha_siguiente
+        return json
+
 
 class Desparasitacion(models.Model):
     ficha = models.ForeignKey(
@@ -250,6 +262,13 @@ class Desparasitacion(models.Model):
 
     def __str__(self):
         return self.tipo
+
+    def toJSON(self):
+        json = model_to_dict(self)
+        json['tipo'] = self.get_tipo_display()
+        json['ficha'] = str(self.ficha)
+        json['fecha'] = self.fecha
+        return json
 
     class Meta:
         ordering = ('-fecha',)
