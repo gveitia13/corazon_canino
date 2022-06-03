@@ -10,18 +10,24 @@
 {% block content %}
 
     <div class="card card-info circular m-0">
-        <div class="card-header circular-top">
-            <h3 class="card-title">
-                <i class="mdi mdi-format-list-bulleted-square mdi-18px"></i>
-                {{ title }}
-            </h3>
-            {% block search %}
+        <div class="card-header circular-top row mx-0">
+            <div class="col-12 col-sm-6 px-0">
+                <h4 class="mb-0">
+                    <i class="mdi mdi-format-list-bulleted-square mdi-18px"></i>
+                    {{ title }}
+                </h4>
+            </div>
+            <div class="col-12 col-sm-6 px-0">
+                {% block search %}
 
-            {% endblock %}
+                {% endblock %}
+            </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-2" style="min-height: 325px;">
             <table id="listTable" class="table  table-striped w3-hoverable-light">
+                <caption>Mostrando {{ object_list.count }} {% if object_list.count == 1 %}
+                    resultado{% else %} resultados {% endif %}</caption>
                 <thead>
                 {% block columns %}
 

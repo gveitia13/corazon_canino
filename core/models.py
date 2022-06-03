@@ -43,11 +43,9 @@ class Ficha(models.Model):
         json['sexo'] = 'Macho' if self.sexo == 'm' else 'Hembra'
         json['esterilizado'] = 'Si' if self.esterilizado else 'No'
         json['enfermedades'] = 'Ninguna' if not self.enfermedades else self.enfermedades
-        json['vacunas'] = [i.toJSON() for i in Vacuna.objects.filter(ficha_id=self.pk)] if Vacuna.objects.filter(
-            ficha_id=self.pk).exists() else []
-        json['desparasitaciones'] = [i.toJSON() for i in Desparasitacion.objects.filter(
-            ficha_id=self.pk)] if Desparasitacion.objects.filter(
-            ficha_id=self.pk).exists() else []
+        json['vacunas'] = [i.toJSON() for i in self.vacuna_set.all()] if self.vacuna_set.exists() else []
+        json['desparasitaciones'] = [i.toJSON() for i in
+                                     self.desparasitacion_set.all()] if self.desparasitacion_set.exists() else []
         return json
 
     def mostrar_foto(self):

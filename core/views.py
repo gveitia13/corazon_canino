@@ -5,8 +5,10 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 
-from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm, VacunaForm, DesparasitacionForm, MedicamentoForm
-from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia, Vacuna, Desparasitacion, Medicamento
+from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm, VacunaForm, \
+    DesparasitacionForm, MedicamentoForm
+from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia, Vacuna, \
+    Desparasitacion, Medicamento
 
 
 class Startpage(generic.TemplateView):
@@ -47,6 +49,12 @@ class FichaListView(generic.ListView, ):
         except Exception as e:
             data['error'] = str(e)
         return JsonResponse(data, safe=False)
+
+    def get_queryset(self):
+        qs = super(FichaListView, self).get_queryset()
+        if self.request.GET.get('search'):
+            qs = qs.filter(nombre__icontains=self.request.GET.get('search'))
+        return qs
 
 
 class FichaCreateView(LoginRequiredMixin, generic.CreateView):
@@ -108,67 +116,6 @@ class FichaDeleteView(LoginRequiredMixin, generic.DeleteView):
         return context
 
 
-# CRUD Visitante
-# class VisitanteListView(LoginRequiredMixin, generic.ListView, ):
-#     model = Visitante
-#     template_name = 'visitante_list.html'
-#     queryset = Visitante.objects.all()
-#     success_url = reverse_lazy('visitante_list')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['create_url'] = reverse_lazy('visitante_add')
-#         context['entity'] = 'Visitante'
-#         context['title'] = 'Listado de visitantes'
-#         return context
-#
-#
-# class VisitanteCreateView(LoginRequiredMixin, generic.CreateView):
-#     model = Visitante
-#     template_name = 'form.html'
-#     fields = "__all__"
-#     success_url = reverse_lazy('visitante_list')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['create_url'] = reverse_lazy('visitante_add')
-#         context['entity'] = 'Visitante'
-#         context['list_url'] = self.success_url
-#         context['title'] = 'Crear un Visitante'
-#         return context
-#
-#
-# class VisitanteUpdateView(LoginRequiredMixin, generic.UpdateView):
-#     model = Visitante
-#     template_name = 'form.html'
-#     fields = "__all__"
-#     success_url = reverse_lazy('visitante_list')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['create_url'] = reverse_lazy('visitante_add')
-#         context['entity'] = 'Visitante'
-#         context['list_url'] = self.success_url
-#         context['title'] = 'Editar Visitante'
-#         return context
-#
-#
-# class VisitanteDeleteView(LoginRequiredMixin, generic.DeleteView):
-#     model = Visitante
-#     template_name = 'delete.html'
-#     success_url = reverse_lazy('visitante_list')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['create_url'] = reverse_lazy('visitante_add')
-#         context['entity'] = 'Visitante'
-#         context['list_url'] = self.success_url
-#         context['title'] = 'Eliminar Visitante'
-#         return context
-
-
-# CRUD Visita
-
 class VisitaListView(generic.ListView, ):
     model = Visita
     template_name = 'visita_list.html'
@@ -181,6 +128,14 @@ class VisitaListView(generic.ListView, ):
         context['entity'] = 'Visita'
         context['title'] = 'Listado de visita'
         return context
+
+    def get_queryset(self):
+        qs = super(VisitaListView, self).get_queryset()
+        if self.request.GET:
+            if not self.request.GET.get('initial') or not self.request.GET.get('end'):
+                return qs
+            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
+        return qs
 
 
 class VisitaCreateView(LoginRequiredMixin, generic.CreateView):
@@ -241,6 +196,14 @@ class EventoListView(generic.ListView, ):
         context['entity'] = 'Evento'
         context['title'] = 'Listado de eventos'
         return context
+
+    def get_queryset(self):
+        qs = super(EventoListView, self).get_queryset()
+        if self.request.GET:
+            if not self.request.GET.get('initial') or not self.request.GET.get('end'):
+                return qs
+            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
+        return qs
 
 
 class EventoCreateView(LoginRequiredMixin, generic.CreateView):
@@ -537,6 +500,14 @@ class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
         context['title'] = 'Listados de denuncias'
         return context
 
+    def get_queryset(self):
+        qs = super(DenunciaListView, self).get_queryset()
+        if self.request.GET:
+            if not self.request.GET.get('initial') or not self.request.GET.get('end'):
+                return qs
+            qs = qs.filter(date_creation__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
+        return qs
+
 
 class DenunciaCreateView(LoginRequiredMixin, generic.CreateView):
     model = Denuncia
@@ -595,6 +566,14 @@ class VacunaListView(LoginRequiredMixin, generic.ListView, ):
         context['entity'] = 'Vacuna'
         context['title'] = 'Listados de vacunas'
         return context
+
+    def get_queryset(self):
+        qs = super(VacunaListView, self).get_queryset()
+        if self.request.GET:
+            if not self.request.GET.get('initial') or not self.request.GET.get('end'):
+                return qs
+            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
+        return qs
 
 
 class VacunaCreateView(LoginRequiredMixin, generic.CreateView):
@@ -655,6 +634,14 @@ class DesparasitacionListView(LoginRequiredMixin, generic.ListView, ):
         context['title'] = 'Listados de desparasitaciones'
         return context
 
+    def get_queryset(self):
+        qs = super(DesparasitacionListView, self).get_queryset()
+        if self.request.GET:
+            if not self.request.GET.get('initial') or not self.request.GET.get('end'):
+                return qs
+            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
+        return qs
+
 
 class DesparasitacionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Desparasitacion
@@ -698,6 +685,7 @@ class DesparasitacionDeleteView(LoginRequiredMixin, generic.DeleteView):
         context['list_url'] = self.success_url
         context['title'] = 'Eliminar desparasitacion'
         return context
+
 
 # CRUD Medicamento
 

@@ -23,8 +23,8 @@ $(function () {
     changeSidebar('.medicamento-sidebar')
   if (window.location.pathname.includes('denuncia'))
     changeSidebar('.denuncia-sidebar')
-  if (window.location.pathname.includes('desparacitacion'))
-    changeSidebar('.desparacitacion-sidebar')
+  if (window.location.pathname.includes('desparasitacion'))
+    changeSidebar('.desparasitacion-sidebar')
 })
 let changeSidebar = function (nav_treeview) {
     let father = document.querySelector(nav_treeview)

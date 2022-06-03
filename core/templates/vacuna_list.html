@@ -1,6 +1,15 @@
 {% extends 'base_list.html' %}
 {% load static %}
 
+{% block search %}
+    <div class="text-right d-flex flex-row-reverse">
+        <form action="." method="get" class="form-inline">
+            <input type="date" class="form-control form-control-sm m-1 w-auto" name="initial">
+            <input type="date" class="form-control form-control-sm m-1 w-auto" name="end">
+            <button class="btn btn-light btn-sm m-1">Filtrar</button>
+        </form>
+    </div>
+{% endblock %}
 {% block columns %}
 
     <td>Fecha</td>

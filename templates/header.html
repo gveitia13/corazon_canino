@@ -3,17 +3,19 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="mdi mdi-menu mdi-18px"></i></a>
         </li>
-{% comment %}        <li>
-            <a class="nav-link pl-0 cursor-pointer" data-toggle="modal" data-target="#links"
-               role="button">
-                <i class="mdi mdi-link-variant mdi-18px"></i></a>
-        </li>{% endcomment %}
         <li class="nav-item">
             <a href="{% url 'index' %}" class="nav-link pl-0"><i
                     class="mdi mdi-home d-sm-inline-block pl-0 pr-0"></i>
                 <span class=" d-none d-sm-inline-block"> Inicio</span>
             </a>
         </li>
+        {% block search_header %}
+{#            <li class="nav-item my-auto">#}
+{#                <form action="." class="">#}
+{#                    <input type="search" name="search" placeholder="nombre" class="form-control form-control-sm">#}
+{#                </form>#}
+{#            </li>#}
+        {% endblock %}
     </ul>
     <ul class="navbar-nav ml-auto">
         <a href="#"></a>
@@ -36,40 +38,13 @@
                 {% endif %}
             </li>
         {% endif %}
-
-{% comment %}        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="mdi mdi-account-settings mdi-18px"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header truncate-1" style="font-size: 12px;">
-                       You last login was {{ request.user.last_login }}
-                    </span>
-                <div class="dropdown-divider"></div>
-{#                <a href="{% url 'user:user_update' request.user.id %}" class="dropdown-item">#}
-                <a href="#!" class="dropdown-item">
-                    <i class="mdi mdi-account-edit mdi-18px mr-2"></i> Edit profile
-                    <span class="float-right text-muted text-sm"></span>
-                </a>
-                <div class="dropdown-divider"></div>
-{#                <a href="{% url 'user:user_change_password' %}" class="dropdown-item">#}
-                <a href="#" class="dropdown-item">
-                    <i class="mdi mdi-lock mdi-18px mr-2"></i> Edit password
-                    <span class="float-right text-muted text-sm"></span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer circular-bottom">
-                    <p>bla bla bla bla bla</p>
-                </a>
-            </div>
-        </li>{% endcomment %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">
                 <i class="mdi mdi-power" aria-hidden="true"></i>
                 {% if request.user.is_authenticated %}
-                 Cerrar sesión
+                    <span class="d-none d-sm-inline-block">Cerrar sesión</span>
                 {% else %}
-                Iniciar sesión
+                    <span class="d-none d-sm-inline-block">Iniciar sesión</span>
                 {% endif %}
             </a>
         </li>
