@@ -21,18 +21,15 @@ class Ficha(models.Model):
     color = models.CharField(max_length=255, verbose_name="Color")
     raza = models.CharField(max_length=255, verbose_name="Raza")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
-    sexo = models.CharField(
-        max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
-    esterilizado = models.BooleanField(
-        default=False, verbose_name="Esterilizado")
+    sexo = models.CharField(max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
+    esterilizado = models.BooleanField(default=False, verbose_name="Esterilizado")
     peso = models.FloatField(verbose_name="Peso en KG", validators=[
         MinValueValidator(0, 'Debe ser positivo')])
-    enfermedades = models.CharField(
-        max_length=255, verbose_name='Enfermedades o lesiones', null=True, blank=True)
-    qr = models.CharField(max_length=900, blank=True,
-                          null=True, verbose_name="Código Qr")
-    date_creation = models.DateField(
-        auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
+    enfermedades = models.CharField(max_length=255, verbose_name='Enfermedades o lesiones',
+                                    null=True, blank=True)
+    qr = models.CharField(max_length=900, blank=True, null=True, verbose_name="Código Qr")
+    date_creation = models.DateField(auto_now_add=True, null=True, blank=True,
+                                     verbose_name='Fecha de registro')
 
     def __str__(self):
         return self.nombre
@@ -111,8 +108,7 @@ class Visita(models.Model):
         null=True, blank=True, verbose_name="Edad (opcional)")
     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
                                 validators=[TELEFONO_REGEX])
-    ci = models.CharField(max_length=11, validators=[
-        MinLengthValidator(11)], verbose_name='Carnet')
+    ci = models.CharField(max_length=11, validators=[MinLengthValidator(11)], verbose_name='Carnet')
     organizacion = models.CharField(
         max_length=255, verbose_name="Organización", null=True, blank=True)
     veterinario = models.BooleanField(
@@ -201,8 +197,9 @@ class Enfermedad(models.Model):
 
 class Denuncia(models.Model):
     descripcion = models.CharField(verbose_name='Descripción', max_length=500)
+    # migrar a requerido
     ubicacion = models.CharField(
-        verbose_name='Ubicación (opcional)', max_length=255, null=True, blank=True)
+        verbose_name='Ubicación', max_length=255, null=True, blank=True)
     caracteristicas = models.CharField(
         verbose_name='Características del animal', max_length=255, )
     foto = models.ImageField(

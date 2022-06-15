@@ -14,6 +14,8 @@
 {% endblock %}
 {% block columns %}
     <td>Nombre</td>
+    <td>Carnet</td>
+    <td>Organización</td>
     <td>Fecha</td>
     <td>Es veterinario</td>
     <td>Opciones</td>
@@ -24,6 +26,8 @@
         {% for obj in object_list %}
             <tr>
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
+                <td>{{ obj.ci }}</td>
+                <td>{{ obj.organizacion }}</td>
                 <td>{{ obj.fecha|date:'d-m-Y' }}</td>
                 {% if obj.veterinario %}
                     <td>Si</td>

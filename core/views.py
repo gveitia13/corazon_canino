@@ -509,7 +509,7 @@ class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
         return qs
 
 
-class DenunciaCreateView(LoginRequiredMixin, generic.CreateView):
+class DenunciaCreateView(generic.CreateView):
     model = Denuncia
     template_name = 'form.html'
     form_class = DenunciaForm
@@ -524,7 +524,7 @@ class DenunciaCreateView(LoginRequiredMixin, generic.CreateView):
         return context
 
 
-class DenunciaUpdateView(LoginRequiredMixin, generic.UpdateView):
+class DenunciaUpdateView(generic.UpdateView):
     model = Denuncia
     template_name = 'form.html'
     form_class = DenunciaForm
@@ -539,7 +539,7 @@ class DenunciaUpdateView(LoginRequiredMixin, generic.UpdateView):
         return context
 
 
-class DenunciaDeleteView(LoginRequiredMixin, generic.DeleteView):
+class DenunciaDeleteView(generic.DeleteView):
     model = Denuncia
     template_name = 'delete.html'
     success_url = reverse_lazy('denuncia-list')
@@ -688,8 +688,6 @@ class DesparasitacionDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 # CRUD Medicamento
-
-
 class MedicamentoListView(generic.ListView, ):
     model = Medicamento
     template_name = 'medicamento_list.html'
