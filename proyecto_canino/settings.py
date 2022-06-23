@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'hitcount',
     'core',
+    'qr_code',
     'django_cleanup.apps.CleanupConfig',
     'login'
 ]

@@ -87,17 +87,13 @@ class FichaUpdateView(LoginRequiredMixin, generic.UpdateView):
         return context
 
 
-class FichaDetailsView(LoginRequiredMixin, generic.DetailView):
-    model = Ficha
+class FichaDetailsView(generic.TemplateView):
     template_name = 'form.html'
-    form_class = FichaForm
-    success_url = reverse_lazy('ficha_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('ficha_add')
         context['entity'] = 'Ficha'
-        context['list_url'] = self.success_url
         context['title'] = 'Detalles de Ficha'
         return context
 

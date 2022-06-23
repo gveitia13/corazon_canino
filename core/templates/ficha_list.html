@@ -1,5 +1,7 @@
 {% extends 'base_list.html' %}
 {% load static %}
+{% load qr_code %}
+{% load concact_str %}
 
 {% block head_list %}
     {#    <script src="{% static 'contrato.js' %}"></script>#}
@@ -19,7 +21,11 @@
         {% for obj in object_list %}
             <tr>
                 <td>{{ obj.link_foto }}</td>
-                <td>{{ obj.link_qr }}</td>
+                {#                <td>{{ obj.link_qr }}</td>#}
+                {#                <td>{% qr_from_text request.build_absolute_uri|concat_string:obj.pk size=5 version=12 %}</td>#}
+                <td>
+                    {% qr_from_text 'http://'|concat_string:request.get_host|concat_string:'/'|concat_string:'ficha/update/'|concat_string:obj.pk size=8 version=3 border=4 %}
+                </td>
                 <td>{{ obj.nombre }}</td>
                 <td>
                     <a class="btn btn-success btn-sm circular ficha-details"
@@ -50,20 +56,4 @@
 {% block javascript %}
     {% include 'modal_ficha.html' %}
     <script src="{% static 'ficha.js' %}"></script>
-{% comment %}    <video id="preview"></video>
-    <script type="text/javascript">
-      let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
-      scanner.addListener('scan', function (content) {
-        console.log(content);
-      });
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
-    </script>{% endcomment %}
 {% endblock %}

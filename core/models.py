@@ -1,3 +1,6 @@
+import hashlib
+import os
+import shutil
 from datetime import datetime
 
 import qrcode
@@ -5,11 +8,16 @@ from crum import get_current_request
 from django.core.validators import RegexValidator, MinLengthValidator, MinValueValidator
 from django.db import models
 from django.forms import model_to_dict
+from django.http import HttpRequest
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 
 SOLO_TEXTO_REGEX = RegexValidator(r'^[a-zA-Z]+$', 'Solo se admiten letras')
 TELEFONO_REGEX = RegexValidator(r'^[\+]?[\d]{5,15}$', 'Formato incorrecto')
+
+
+def hash_string(string):
+    return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
 
 class Ficha(models.Model):
@@ -43,6 +51,7 @@ class Ficha(models.Model):
         json['vacunas'] = [i.toJSON() for i in self.vacuna_set.all()] if self.vacuna_set.exists() else []
         json['desparasitaciones'] = [i.toJSON() for i in
                                      self.desparasitacion_set.all()] if self.desparasitacion_set.exists() else []
+        json['qr'] = self.qr_relativo()
         return json
 
     def mostrar_foto(self):
@@ -60,6 +69,28 @@ class Ficha(models.Model):
         if self.qr is not None:
             imagen = self.qr
         return mark_safe('<img src="' + imagen + '"  width="80" height="80" class="agrandar cursor-zoom-in">')
+
+    def qr_relativo(self):
+        shutil.rmtree(os.path.join(os.getcwd(), 'media/qr_relativo/'))
+        os.mkdir(os.path.join(os.getcwd(), 'media/qr_relativo/'))
+
+        request: HttpRequest = get_current_request()
+        # request.build_absolute_uri()
+        print(request.get_host())
+        qr = qrcode.make()
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            box_size=20,
+            border=4,
+        )
+        qr.add_data(f"http://{request.get_host()}/ficha/update/{self.pk}/")
+        qr.make(fit=True)
+        imagen = qr.make_image(
+            fill_color="black", back_color="white").convert('RGB')
+        root = "media/qr_relativo/" + hash_string(str(self.pk) + str(datetime.now()) + self.nombre) + ".png"
+        imagen.save(root)
+        return '/' + root
 
     def link_qr(self):
         return mark_safe(f'<a href="{self.qr}"> {self.mostrar_qr()}</a>')
@@ -79,15 +110,7 @@ class Ficha(models.Model):
                 border=4,
             )
             esterilizado = 'Si' if self.esterilizado else 'No'
-            qr.add_data({
-                'nombre': str(self.nombre),
-                'color': str(self.color),
-                'raza': str(self.raza),
-                'sexo': str(self.sexo),
-                'esterilizado': str(esterilizado),
-                'peso': str(self.peso),
-                'link': f"http://{request.get_host()}/ficha/update/{self.pk}/",
-            })
+            qr.add_data(f"http://{request.get_host()}/ficha/update/{self.pk}/")
             qr.make(fit=True)
             imagen = qr.make_image(
                 fill_color="black", back_color="white").convert('RGB')
@@ -98,6 +121,7 @@ class Ficha(models.Model):
             self.qr = "/media/qr/" + str(pk) + '.png'
             self.save()
             imagen.save("media/qr/" + str(pk) + ".png")
+            print(imagen)
         super(Ficha, self).save(*args, **kwargs)
 
 
