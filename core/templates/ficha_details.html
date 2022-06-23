@@ -6,121 +6,117 @@
     {% endblock %}
 {% endblock %}
 {% block content %}
-    <form method="post" action="." enctype="multipart/form-data">
-        <div class="card card-info circular">
-            <div class="card-header circular-top">
-                <h3 class="card-title">
-                    {% if action == 'add' %}
-                        <i class="mdi mdi-plus"></i>
-                    {% else %}
-                        <i class="mdi mdi-square-edit-outline"></i>
-                    {% endif %}
+    <div class="card card-info circular">
+        <div class="card-header circular-top">
+            <h3 class="card-title">
+                {% if action == 'add' %}
+                    <i class="mdi mdi-plus"></i>
+                {% else %}
+                    <i class="mdi mdi-square-edit-outline"></i>
+                {% endif %}
 
-                    {{ title }}
-                </h3>
+                {{ title }}
+            </h3>
+        </div>
+
+        <div class="card card-body widget-user mb-0">
+            <div class="row">
+                <div class="col-6 text-center p-0">
+                    <img class="circular agrandar" src="{{ object.foto.url }}" style="height: 150px;width: 150px"
+                         alt="User Avatar" id="ficha-image">
+                </div>
+                <div class="col-6 text-center p-0">
+                    <img class="agrandar" src="{{ object.qr }}" style="height: 150px;width: 150px"
+                         alt="User Avatar" id="qr-image">
+                </div>
             </div>
-
-            <div class="card card-body widget-user mb-0">
+            <div class="card-body px-0 circular-bottom">
                 <div class="row">
-                    <div class="col-6 text-center p-0">
-                        <img class="circular agrandar" src="" style="height: 150px;width: 150px"
-                             alt="User Avatar" id="ficha-image">
+                    <div class="col-6">
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Nombre:</strong>
+                            <span id="modal-name" class="">{{ object.nombre }}</span>
+                        </div>
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Sexo: </strong>
+                            <span class="" id="modal-sexo">{{ object.sexo }}</span>
+                        </div>
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Esterilizado: </strong>
+                            <span id="modal-esterilizado">{{ object.esterilizado }}</span>
+                        </div>
                     </div>
-                    <div class="col-6 text-center p-0">
-                        <img class="agrandar" src="" style="height: 150px;width: 150px"
-                             alt="User Avatar" id="qr-image">
+                    <div class="col-6">
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Color:</strong>
+                            <span id="modal-color">{{ object.color }}</span>
+                        </div>
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Peso:</strong>
+                            <span id="modal-peso">{{ object.peso }}</span>
+                        </div>
+                        <div class="truncate-1">
+                            <strong class="d-sm-inline-block d-none">Raza:</strong>
+                            <span id="modal-raza">{{ object.raza }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body px-0 circular-bottom">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Nombre:</strong>
-                                <span id="modal-name" class=""></span>
-                            </div>
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Sexo: </strong>
-                                <span class="" id="modal-sexo"> </span>
-                            </div>
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Esterilizado: </strong>
-                                <span id="modal-esterilizado"> </span>
-                            </div>
+                    <div class="col-12">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Enfermedades: </strong>
+                            <span id="modal-enfermedades">{{ object.enfermedades }}</span>
                         </div>
-                        <div class="col-6">
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Color:</strong>
-                                <span id="modal-color"> </span>
-                            </div>
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Peso:</strong>
-                                <span id="modal-peso"> -------</span>
-                            </div>
-                            <div class="truncate-1">
-                                <strong class="d-sm-inline-block d-none">Raza:</strong>
-                                <span id="modal-raza"> -------</span>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="">
-                                <strong class="d-sm-inline-block d-none">Enfermedades: </strong>
-                                <span id="modal-enfermedades"> </span>
-                            </div>
-                        </div>
-                        <div class="rayita-light"></div>
-                        <div class="col-12">
-                            <h5>Vacunas</h5>
-                            <table class="table table-bordered table-hover table-sm">
-                                <thead>
+                    </div>
+                    <div class="rayita-light"></div>
+                    <div class="col-12">
+                        <h5>Vacunas</h5>
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Fecha Siguiente</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabla-vacuna">
+                            {% for vacuna  in object.vacuna_set.all %}
                                 <tr>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Fecha Siguiente</th>
+                                    <td>{{ vacuna.fecha }}</td>
+                                    <td>{{ vacuna.producto }}</td>
+                                    <td>{{ vacuna.fecha_siguiente }}</td>
                                 </tr>
-                                </thead>
-                                <tbody id="tabla-vacuna">
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12">
+                        <h5>Desparasitación</h5>
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Peso</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tabla-desparasitacion">
+                            {% for desp in object.desparasitacion_set.all %}
                                 <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ desp.fecha }}</td>
+                                    <td>{{ desp.tipo }}</td>
+                                    <td>{{ desp.peso }}</td>
                                 </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-12">
-                            <h5>Desparasitación</h5>
-                            <table class="table table-bordered table-hover table-sm">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Tipo</th>
-                                    <th scope="col">Peso</th>
-                                </tr>
-                                </thead>
-                                <tbody id="tabla-desparasitacion">
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="card-footer circular-bottom">
-                <button type="submit" class="btn bg-gradient-primary circular">
-                    <i class="mdi mdi-content-save"></i> Guardar {{ entity }}
-                </button>
-                <a href="{{ list_url }}" class="btn bg-gradient-danger circular">
-                    <i class="mdi mdi-cancel"></i> Cancelar
-
-                </a>
             </div>
         </div>
-    </form>
-    </script>
+
+        <div class="card-footer circular-bottom">
+            <a href="{% url 'ficha_list' %}" class="btn bg-gradient-primary circular">
+                <i class="mdi mdi-arrow-left-bold"></i> Atrás
+            </a>
+        </div>
+    </div>
 {% endblock %}

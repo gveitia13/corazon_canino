@@ -84,7 +84,7 @@ class Ficha(models.Model):
             box_size=20,
             border=4,
         )
-        qr.add_data(f"http://{request.get_host()}/ficha/update/{self.pk}/")
+        qr.add_data(f"http://{request.get_host()}/ficha/details/{self.pk}/")
         qr.make(fit=True)
         imagen = qr.make_image(
             fill_color="black", back_color="white").convert('RGB')
@@ -110,7 +110,7 @@ class Ficha(models.Model):
                 border=4,
             )
             esterilizado = 'Si' if self.esterilizado else 'No'
-            qr.add_data(f"http://{request.get_host()}/ficha/update/{self.pk}/")
+            qr.add_data(f"http://{request.get_host()}/ficha/details/{self.pk}/")
             qr.make(fit=True)
             imagen = qr.make_image(
                 fill_color="black", back_color="white").convert('RGB')

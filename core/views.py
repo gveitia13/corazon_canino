@@ -87,8 +87,9 @@ class FichaUpdateView(LoginRequiredMixin, generic.UpdateView):
         return context
 
 
-class FichaDetailsView(generic.TemplateView):
-    template_name = 'form.html'
+class FichaDetailsView(generic.DetailView):
+    template_name = 'ficha_details.html'
+    model = Ficha
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -24,7 +24,7 @@
                 {#                <td>{{ obj.link_qr }}</td>#}
                 {#                <td>{% qr_from_text request.build_absolute_uri|concat_string:obj.pk size=5 version=12 %}</td>#}
                 <td>
-                    {% qr_from_text 'http://'|concat_string:request.get_host|concat_string:'/'|concat_string:'ficha/update/'|concat_string:obj.pk size=8 version=3 border=4 %}
+                    {% qr_from_text 'http://'|concat_string:request.get_host|concat_string:'/'|concat_string:'ficha/details/'|concat_string:obj.pk size=8 version=3 border=4 %}
                 </td>
                 <td>{{ obj.nombre }}</td>
                 <td>
