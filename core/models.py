@@ -226,8 +226,6 @@ class Denuncia(models.Model):
         verbose_name='Ubicación', max_length=255)
     caracteristicas = models.CharField(
         verbose_name='Características del animal', max_length=255, )
-    # foto = models.ImageField(
-    #     upload_to='fotos/', verbose_name="Evidencia (foto)", )
     date_creation = models.DateField(
         auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
@@ -237,12 +235,20 @@ class Denuncia(models.Model):
     class Meta:
         ordering = ['date_creation']
 
-    # def mostrar_foto(self):
-    #     return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
-    #                                                     'cursor-zoom-in">')
-    #
-    # def link_foto(self):
-    #     return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
+    def mostrar_foto(self):
+        if self.fotodenuncia_set.exists():
+            foto = self.fotodenuncia_set.first().foto.url
+        else:
+            foto = ''
+        return mark_safe('<img src="' + foto + '"  width="80" height="80" class="circular agrandar '
+                                                        'cursor-zoom-in">')
+
+    def link_foto(self):
+        if self.fotodenuncia_set.exists():
+            foto = self.fotodenuncia_set.first().foto.url
+        else:
+            foto = '#'
+        return mark_safe(f'<a href="{foto}"> {self.mostrar_foto()}</a>')
 
 
 class FotoDenuncia(models.Model):

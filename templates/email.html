@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Corazón Canino</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="content px-0">
+            <div class="container-fluid px-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h1>Corazón Canino</h1>
+                        <h2 class="card-title">Denuncia número {{ object.pk }}</h2>
+                        <p class="card-text"><b>Ubicación:</b></p>
+                        <p>{{ object.ubicacion }}</p>
+                        <p class="card-text"><b>Descripción:</b></p>
+                        <p>{{ object.descripcion }}</p>
+                        <p class="card-text"><b>Características del animal:</b></p>
+                        <p>{{ object.caracteristicas }}</p>
+                    </div>
+                </div>
+                <h2>Evidencia en fotos en los adjuntos</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

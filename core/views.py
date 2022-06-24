@@ -1,6 +1,14 @@
+import os
+import smtplib
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import EmailMessage, send_mail, EmailMultiAlternatives
 from django.http import JsonResponse, HttpRequest
 from django.shortcuts import render, redirect
+from django.template.loader import get_template, render_to_string
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
@@ -10,6 +18,7 @@ from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, Enfer
     DesparasitacionForm, MedicamentoForm
 from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia, Vacuna, \
     Desparasitacion, Medicamento, FotoDenuncia
+from proyecto_canino import settings
 
 
 class Startpage(generic.TemplateView):
@@ -534,6 +543,38 @@ class DenunciaCreateView(generic.TemplateView):
                 foto.foto = f
                 foto.denuncia_id = denuncia.pk
                 foto.save()
+        # email = EmailMessage(
+        #     'Nueva denuncia',
+        #     'Doy el berro test',
+        #     settings.EMAIL_HOST_USER,
+        #     ['gveitia13@gmail.com'],
+        #     reply_to=['gveitia95@gmail.com']
+        # )
+        try:
+            mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
+            mailServer.starttls()
+            mailServer.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+
+            mensaje = MIMEMultipart()
+            mensaje['From'] = settings.EMAIL_HOST_USER
+            mensaje['To'] = 'gveitia13@gmail.com'
+            mensaje['Subject'] = 'Nueva denuncia'
+            content = render_to_string('email.html', {'object': denuncia})
+            mensaje.attach(MIMEText(content, 'html'))
+
+            for i in denuncia.fotodenuncia_set.all():
+                file = open(os.path.join(os.getcwd(), 'media/', i.foto.name), 'rb')
+                contenido = MIMEImage(file.read())
+                contenido.add_header('Content-Disposition', f'attachment; filename = "{i.foto.name}"')
+                mensaje.attach(contenido)
+
+            mailServer.sendmail(settings.EMAIL_HOST_USER,
+                                'gveitia13@gmail.com',
+                                mensaje.as_string())
+
+        except Exception as a:
+            print(a)
+            return JsonResponse({}, safe=False)
         return redirect(reverse_lazy('index'))
 
 
