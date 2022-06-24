@@ -45,10 +45,17 @@
                         </div>
                     </div>
                 {% endfor %}
+                <div class="form-group row">
+                    <label for="asd" class="col-sm-2 col-form-label">Fotos de evidencia</label>
+                    <div class="col-sm-10">
+                        <input type="file" multiple accept="image/*" class="form-control-file form-control circular"
+                               name="image">
+                    </div>
+                </div>
             </div>
             <div class="card-footer circular-bottom">
                 <button type="submit" class="btn bg-gradient-primary circular">
-                    <i class="mdi mdi-content-save"></i> Guardar {{ entity }}
+                    <i class="mdi mdi-email-send-outline"></i> Enviar {{ entity }}
                 </button>
                 <a href="{{ list_url }}" class="btn bg-gradient-danger circular">
                     <i class="mdi mdi-cancel"></i> Cancelar
@@ -74,12 +81,5 @@
           icon: 'error'
         });
       {% endif %}
-
-      {% comment %}      $('form').on('submit', function (e) {
-              e.preventDefault();
-              let parameters = new FormData(this)
-              submit_with_ajax_alert(window.location.pathname, 'Notification', 'Are you sure?', parameters, () =>
-                location.href = '{{ list_url }}', 'mdi mdi-cancel')
-            }){% endcomment %}
     </script>
 {% endblock %}

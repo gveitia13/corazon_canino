@@ -223,11 +223,11 @@ class Denuncia(models.Model):
     descripcion = models.CharField(verbose_name='Descripción', max_length=500)
     # migrar a requerido
     ubicacion = models.CharField(
-        verbose_name='Ubicación', max_length=255, null=True, blank=True)
+        verbose_name='Ubicación', max_length=255)
     caracteristicas = models.CharField(
         verbose_name='Características del animal', max_length=255, )
-    foto = models.ImageField(
-        upload_to='fotos/', verbose_name="Evidencia (foto)", )
+    # foto = models.ImageField(
+    #     upload_to='fotos/', verbose_name="Evidencia (foto)", )
     date_creation = models.DateField(
         auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
 
@@ -237,12 +237,18 @@ class Denuncia(models.Model):
     class Meta:
         ordering = ['date_creation']
 
-    def mostrar_foto(self):
-        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
-                                                        'cursor-zoom-in">')
+    # def mostrar_foto(self):
+    #     return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+    #                                                     'cursor-zoom-in">')
+    #
+    # def link_foto(self):
+    #     return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
 
-    def link_foto(self):
-        return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
+
+class FotoDenuncia(models.Model):
+    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE, null=True, blank=True)
+    foto = models.ImageField(
+        upload_to='fotos/', verbose_name="Evidencia (foto)", )
 
 
 class Vacuna(models.Model):

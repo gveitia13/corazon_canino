@@ -117,14 +117,27 @@ class DenunciaForm(ModelForm):
         fields = '__all__'
         exclude = ('date_creation',)
         widgets = {
-            ('descripcion', 'caracteristicas'): forms.Textarea(
+            'descripcion': forms.Textarea(
                 attrs={
-                    'placeholder': '',
+                    'placeholder': 'Especifique los motivos de su denuncia',
                     'rows': 3,
                     'cols': 3,
                     'class': 'circular'
                 }
             ),
+            'caracteristicas': forms.Textarea(
+                attrs={
+                    'placeholder': 'Describa al animal',
+                    'rows': 2,
+                    'cols': 3,
+                    'class': 'circular'
+                }
+            ),
+            'ubicacion': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ubicación de los hechos'
+                }
+            )
         }
 
 
@@ -149,7 +162,8 @@ class VacunaForm(ModelForm):
                 }
             ),
         }
-        
+
+
 class DesparasitacionForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

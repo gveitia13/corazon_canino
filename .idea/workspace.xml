@@ -5,10 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/migrations/0014_remove_denuncia_foto_alter_denuncia_ubicacion_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/templates/denuncia_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/95031309125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/95031309125_IBHPuoK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/95031309125_UvKHC5V.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/ProblemaEstados_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/ProblemaEstados_1_5xYO98I.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/WhatsApp_Image_2022-05-07_at_11.11.27_PM.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126_fWsTEox.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr_relativo/d05eacf10f4e645d5e04a3ab2af07672898aab3169e2379cf3c02020e2cbc971.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/ficha_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/ficha_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/qr_relativo/7028c4176a66102801995c333aadc9f8e9aec0d9e2f1c3363dfe866b1df94068.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +148,9 @@
       <workItem from="1655259265888" duration="1005000" />
       <workItem from="1655322354278" duration="8417000" />
       <workItem from="1642890768603" duration="1274000" />
-      <workItem from="1642921743901" duration="14769000" />
+      <workItem from="1642921743901" duration="15033000" />
+      <workItem from="1642968310858" duration="103000" />
+      <workItem from="1656015188230" duration="10782000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -272,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655983889987</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="to las tallas del qr listas">
+      <created>1655985953326</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1655985953326</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +325,7 @@
     <MESSAGE value="añadido filtro por fechas" />
     <MESSAGE value="hola" />
     <MESSAGE value="qr ready, falta ficha details" />
-    <option name="LAST_COMMIT_MESSAGE" value="qr ready, falta ficha details" />
+    <MESSAGE value="to las tallas del qr listas" />
+    <option name="LAST_COMMIT_MESSAGE" value="to las tallas del qr listas" />
   </component>
 </project>

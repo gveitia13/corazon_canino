@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpRequest
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic
@@ -8,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from core.forms import FichaForm, VisitaForm, EventoForm, InformacionForm, EnfermedadForm, DenunciaForm, VacunaForm, \
     DesparasitacionForm, MedicamentoForm
 from core.models import Ficha, Visita, Evento, Informacion, Contacto, Asociado, Enfermedad, Denuncia, Vacuna, \
-    Desparasitacion, Medicamento
+    Desparasitacion, Medicamento, FotoDenuncia
 
 
 class Startpage(generic.TemplateView):
@@ -93,7 +94,6 @@ class FichaDetailsView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['create_url'] = reverse_lazy('ficha_add')
         context['entity'] = 'Ficha'
         context['title'] = 'Detalles de Ficha'
         return context
@@ -506,11 +506,11 @@ class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
         return qs
 
 
-class DenunciaCreateView(generic.CreateView):
+class DenunciaCreateView(generic.TemplateView):
     model = Denuncia
-    template_name = 'form.html'
+    template_name = 'denuncia_form.html'
     form_class = DenunciaForm
-    success_url = reverse_lazy('denuncia-list')
+    success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -518,7 +518,23 @@ class DenunciaCreateView(generic.CreateView):
         context['entity'] = 'Denuncia'
         context['list_url'] = self.success_url
         context['title'] = 'Crear Denuncia'
+        context['form'] = self.form_class
         return context
+
+    def post(self, request: HttpRequest, *args: list, **kwargs: dict):
+        denuncia = Denuncia()
+        denuncia.caracteristicas = request.POST.get('caracteristicas', None)
+        denuncia.descripcion = request.POST.get('descripcion', None)
+        denuncia.ubicacion = request.POST.get('ubicacion', None)
+        denuncia.save()
+
+        if request.FILES:
+            for f in request.FILES.getlist('image'):
+                foto = FotoDenuncia()
+                foto.foto = f
+                foto.denuncia_id = denuncia.pk
+                foto.save()
+        return redirect(reverse_lazy('index'))
 
 
 class DenunciaUpdateView(generic.UpdateView):
