@@ -5,20 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/migrations/0015_denuncia_tipo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0016_alter_denuncia_tipo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/WhatsApp_Image_2022-06-24_at_1.04.03_PM.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04_eCPEELX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04_zZ2N4Yn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126_6kR0p63.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126_R1x0Fk0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/proyecto_canino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto_canino.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/denuncia_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/95031309125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/95031309125_IBHPuoK.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/95031309125_UvKHC5V.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/ProblemaEstados_1_5xYO98I.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/WhatsApp_Image_2022-05-07_at_11.11.27_PM.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/photo1650759126.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/fotos/photo1650759126_fWsTEox.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/email.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +143,8 @@
       <workItem from="1642890768603" duration="1274000" />
       <workItem from="1642921743901" duration="15033000" />
       <workItem from="1642968310858" duration="103000" />
-      <workItem from="1656015188230" duration="21080000" />
+      <workItem from="1656015188230" duration="21416000" />
+      <workItem from="1656121823330" duration="10002000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -299,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656057229720</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="correo con adjuntos ready">
+      <created>1656067664240</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656067664241</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,6 +335,7 @@
     <MESSAGE value="qr ready, falta ficha details" />
     <MESSAGE value="to las tallas del qr listas" />
     <MESSAGE value="denuncias ready, falta correo" />
-    <option name="LAST_COMMIT_MESSAGE" value="denuncias ready, falta correo" />
+    <MESSAGE value="correo con adjuntos ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="correo con adjuntos ready" />
   </component>
 </project>

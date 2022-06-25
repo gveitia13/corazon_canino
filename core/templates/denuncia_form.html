@@ -41,10 +41,42 @@
                     <div class="form-group row">
                         <label for="asd" class="col-sm-2 col-form-label">{{ field.label }}:</label>
                         <div class="col-sm-10">
-                            {{ field|add_class:'form-control circular'|attr:'autocomplete:off' }}
+                            {{ field|add_class:'circular'|attr:'autocomplete:off' }}
                         </div>
                     </div>
                 {% endfor %}
+
+                <div class=" form-group row">
+                    <label for="asd" class="col-sm-2 col-form-label">Tipo de denuncia:</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="tipo" type="checkbox" id="inlineCheckbox1"
+                                   value="Abandono">
+                            <label class="form-check-label" for="inlineCheckbox1">Abandono</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="tipo" type="checkbox" id="inlineCheckbox2"
+                                   value="Mal estado físico">
+                            <label class="form-check-label" for="inlineCheckbox2">Mal estado físico</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="tipo" type="checkbox" id="inlineCheckbox3"
+                                   value="Hacinamiento">
+                            <label class="form-check-label" for="inlineCheckbox3">Hacinamiento</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="tipo" type="checkbox" id="inlineCheckbox4"
+                                   value="Violencia física">
+                            <label class="form-check-label" for="inlineCheckbox4">Violencia física</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="tipo" type="checkbox" id="inlineCheckbox5"
+                                   value="Causar la muerte">
+                            <label class="form-check-label" for="inlineCheckbox5">Causar la muerte</label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="asd" class="col-sm-2 col-form-label">Fotos de evidencia</label>
                     <div class="col-sm-10">

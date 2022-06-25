@@ -535,21 +535,21 @@ class DenunciaCreateView(generic.TemplateView):
         denuncia.caracteristicas = request.POST.get('caracteristicas', None)
         denuncia.descripcion = request.POST.get('descripcion', None)
         denuncia.ubicacion = request.POST.get('ubicacion', None)
+        tipo = ''
+        coma = ','
+        if request.POST.get('tipo') is not None:
+            for t, c in zip(request.POST.getlist('tipo'), range(len(request.POST.getlist('tipo')))):
+                if c == len(request.POST.getlist('tipo')) - 1:
+                    coma = ''
+                tipo += f'{t}{coma} '
+        denuncia.tipo = tipo
         denuncia.save()
-
         if request.FILES:
             for f in request.FILES.getlist('image'):
                 foto = FotoDenuncia()
                 foto.foto = f
                 foto.denuncia_id = denuncia.pk
                 foto.save()
-        # email = EmailMessage(
-        #     'Nueva denuncia',
-        #     'Doy el berro test',
-        #     settings.EMAIL_HOST_USER,
-        #     ['gveitia13@gmail.com'],
-        #     reply_to=['gveitia95@gmail.com']
-        # )
         try:
             mailServer = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
             mailServer.starttls()

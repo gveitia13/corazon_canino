@@ -115,14 +115,14 @@ class DenunciaForm(ModelForm):
     class Meta:
         model = Denuncia
         fields = '__all__'
-        exclude = ('date_creation',)
+        exclude = ('date_creation', 'tipo')
         widgets = {
             'descripcion': forms.Textarea(
                 attrs={
                     'placeholder': 'Especifique los motivos de su denuncia',
                     'rows': 3,
                     'cols': 3,
-                    'class': 'circular'
+                    'class': 'circular form-control'
                 }
             ),
             'caracteristicas': forms.Textarea(
@@ -130,14 +130,15 @@ class DenunciaForm(ModelForm):
                     'placeholder': 'Describa al animal',
                     'rows': 2,
                     'cols': 3,
-                    'class': 'circular'
+                    'class': 'circular form-control'
                 }
             ),
             'ubicacion': forms.TextInput(
                 attrs={
-                    'placeholder': 'Ubicación de los hechos'
+                    'placeholder': 'Ubicación de los hechos',
+                    'class': 'form-control'
                 }
-            )
+            ),
         }
 
 

@@ -9,7 +9,6 @@ from django.core.validators import RegexValidator, MinLengthValidator, MinValueV
 from django.db import models
 from django.forms import model_to_dict
 from django.http import HttpRequest
-from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 
 SOLO_TEXTO_REGEX = RegexValidator(r'^[a-zA-Z]+$', 'Solo se admiten letras')
@@ -228,6 +227,12 @@ class Denuncia(models.Model):
         verbose_name='Características del animal', max_length=255, )
     date_creation = models.DateField(
         auto_now_add=True, null=True, blank=True, verbose_name='Fecha de registro')
+    MY_CHOICES2 = ((1, 'Abandono'),
+                   (2, 'Mal estado físico'),
+                   (3, 'Hacinamiento'),
+                   (4, 'Violencia física'),
+                   (5, 'Causar la muerte'))
+    tipo = models.CharField(max_length=100, verbose_name='Tipo de denuncia')
 
     def __str__(self):
         return self.descripcion
@@ -241,7 +246,7 @@ class Denuncia(models.Model):
         else:
             foto = ''
         return mark_safe('<img src="' + foto + '"  width="80" height="80" class="circular agrandar '
-                                                        'cursor-zoom-in">')
+                                               'cursor-zoom-in">')
 
     def link_foto(self):
         if self.fotodenuncia_set.exists():
