@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/migrations/0015_denuncia_tipo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/migrations/0016_alter_denuncia_tipo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/WhatsApp_Image_2022-06-24_at_1.04.03_PM.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04_eCPEELX.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/bacba5b76b7a2fae8c005e59e3896191463f4f368e72b3576e803089ea892b04_zZ2N4Yn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126_6kR0p63.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/photo1650759126_R1x0Fk0.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proyecto_canino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proyecto_canino.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/migrations/0017_remove_medicamento_cantidad_alter_contacto_area_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/migrations/0015_denuncia_tipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/migrations/0015_denuncia_tipo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/denuncia_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/asociado_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/asociado_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/contacto_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/contacto_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/desparasitacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/desparasitacion_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/enfermedad_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/enfermedad_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/evento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/evento_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/ficha_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/ficha_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/informacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/informacion_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/medicamento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/medicamento_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/visita_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/visita_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/qr_relativo/d05eacf10f4e645d5e04a3ab2af07672898aab3169e2379cf3c02020e2cbc971.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/mystyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/mystyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cards_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cards_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +60,14 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -144,7 +151,9 @@
       <workItem from="1642921743901" duration="15033000" />
       <workItem from="1642968310858" duration="103000" />
       <workItem from="1656015188230" duration="21416000" />
-      <workItem from="1656121823330" duration="10002000" />
+      <workItem from="1656121823330" duration="10963000" />
+      <workItem from="1656198638932" duration="7974000" />
+      <workItem from="1656238902719" duration="4245000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -307,11 +316,29 @@
       <option name="project" value="LOCAL" />
       <updated>1656067664241</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="añadido tipo a denuncia">
+      <created>1656137712779</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1656137712779</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -336,6 +363,7 @@
     <MESSAGE value="to las tallas del qr listas" />
     <MESSAGE value="denuncias ready, falta correo" />
     <MESSAGE value="correo con adjuntos ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="correo con adjuntos ready" />
+    <MESSAGE value="añadido tipo a denuncia" />
+    <option name="LAST_COMMIT_MESSAGE" value="añadido tipo a denuncia" />
   </component>
 </project>

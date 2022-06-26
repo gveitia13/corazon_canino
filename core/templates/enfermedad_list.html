@@ -11,20 +11,22 @@
 {% block rows %}
     {% if object_list %}
         {% for obj in object_list %}
-            <div class="card ">
-                <div class="card-header bg-gray-light">
+            <div class="card circular">
+                <div class="card-header bg-gray-light circular-top">
                     {{ obj.nombre }}
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ obj.descripcion }}</p>
+                    <p class="card-text truncate-4">{{ obj.descripcion }}</p>
                 </div>
-                <div class="card-footer text-right">
-                    <a href="{% url 'enfermedad-update' obj.pk %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i> Editar</a>
-                    <a href="{% url 'enfermedad-delete' obj.pk %}"
-                       class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i> Eliminar</a>
-                </div>
+                {% if user.is_authenticated %}
+                    <div class="card-footer text-right circular-bottom">
+                        <a href="{% url 'enfermedad-update' obj.pk %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i> Editar</a>
+                        <a href="{% url 'enfermedad-delete' obj.pk %}"
+                           class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i> Eliminar</a>
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
     {% else %}

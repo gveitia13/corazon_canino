@@ -3,22 +3,26 @@
 
 {% block columns %}
     <td>Nombre</td>
-    <td>Descripción</td>
-    <td>Opciones</td>
+    <td>Descripción
+        {% if user.is_authenticated %}
+            <td>Opciones</td>
+        {% endif %}
 {% endblock %}
 
 {% block rows %}
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
-                <td>{{ obj.nombre }}</td>
-                <td>{{ obj.descripcion }}</td>
-                <td>
-                    <a href="{% url 'medicamento-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'medicamento-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
-                </td>
+                <td class="">{{ obj.nombre }}</td>
+                <td class="">{{ obj.descripcion }}</td>
+                {% if user.is_authenticated %}
+                    <td class="">
+                        <a href="{% url 'medicamento-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'medicamento-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     {% else %}

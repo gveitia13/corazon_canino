@@ -5,7 +5,9 @@
     <td>Foto</td>
     <td>Nombre</td>
     <td>Teléfono</td>
-    <td>Opciones</td>
+    {% if user.is_authenticated %}
+        <td>Opciones</td>
+    {% endif %}
 {% endblock %}
 
 {% block rows %}
@@ -15,12 +17,14 @@
                 <td>{{ obj.link_foto }}</td>
                 <td>{{ obj.nombre }}</td>
                 <td>{{ obj.telefono }}</td>
-                <td>
-                    <a href="{% url 'asociado-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'asociado-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
-                </td>
+                {% if user.is_authenticated %}
+                    <td>
+                        <a href="{% url 'asociado-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'asociado-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     {% else %}

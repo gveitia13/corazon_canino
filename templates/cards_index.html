@@ -2,8 +2,8 @@
 <div class="detalle-tienda-cards row">
     <div class="col-12 col-sm-6 col-md-4">
         <div class="card card-product">
-            <a  style="color: inherit">
-                <img src="{% static "img/index/promo (61).png" %}" class="card-img-top p-2"
+            <a style="color: inherit">
+                <img src="{% static "img/index/promo (61).png" %}" class="card-img-top px-5 p-sm-2 py-2"
                      alt="prueba">
                 <div class="card-body">
                     <span class="text-lg font-weight-bold truncate-1 ml-3">Ficha Animal:</span>
@@ -11,6 +11,11 @@
                         <li class="text-gray-dark"><a href="{% url "ficha_list" %}">Listado</a></li>
                         <li class="text-gray-dark"><a href="{% url "ficha_add" %}">Registrar</a></li>
                         <li class="text-gray-dark"><a href="#">Escanear Qr</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="text-gray-dark"><a href="{% url 'vacuna-add' %}">Vacunas</a></li>
+                            <li class="text-gray-dark"><a href="{% url 'desparasitacion-add' %}">Desparasitación</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </a>
@@ -18,8 +23,8 @@
     </div>
     <div class="col-12 col-sm-6 col-md-4">
         <div class="card card-product">
-            <a  style="color: inherit">
-                <img src="{% static "img/index/plus.png" %}" class="card-img-top p-2"
+            <a style="color: inherit">
+                <img src="{% static "img/index/plus.png" %}" class="card-img-top px-5 p-sm-2 py-2"
                      alt="prueba">
                 <div class="card-body">
                     <span class="text-lg font-weight-bold truncate-1 ml-3">Colaboradores:</span>
@@ -35,13 +40,12 @@
     <div class="col-12 col-sm-6 col-md-4">
         <div class="card card-product">
             <a style="color: inherit">
-                <img src="{% static "img/index/pastilla.jpg" %}" class="card-img-top p-2"
+                <img src="{% static "img/index/pastilla.jpg" %}" class="card-img-top px-5 p-sm-2 py-2"
                      alt="prueba">
                 <div class="card-body">
                     <span class="text-lg font-weight-bold truncate-1 ml-3">Salud:</span>
                     <ul class="mb-0">
                         <li class="text-gray-dark"><a href="{% url 'enfermedad-list' %}">Enfermedades</a></li>
-                        <li class="text-gray-dark"><a href="{% url 'vacuna-list' %}">Vacunas</a></li>
                         <li class="text-gray-dark"><a href="{% url 'medicamento-list' %}">Medicamentos</a></li>
                     </ul>
                 </div>

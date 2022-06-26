@@ -27,22 +27,24 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url 'vacuna-list' %}" class="nav-link vacuna-sidebar">
-                        <i class="nav-icon mdi mdi-needle"></i>
-                        <p>
-                            Vacunas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'desparasitacion-list' %}" class="nav-link desparasitacion-sidebar">
-                        <i class="nav-icon mdi mdi-bug"></i>
-                        <p>
-                            Desparasitaciones
-                        </p>
-                    </a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'vacuna-list' %}" class="nav-link vacuna-sidebar">
+                            <i class="nav-icon mdi mdi-needle"></i>
+                            <p>
+                                Vacunas
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'desparasitacion-list' %}" class="nav-link desparasitacion-sidebar">
+                            <i class="nav-icon mdi mdi-bug"></i>
+                            <p>
+                                Desparasitaciones
+                            </p>
+                        </a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a href="{% url 'denuncia-add' %}" class="nav-link denuncia-sidebar">
                         <i class="nav-icon mdi mdi-chat-alert"></i>

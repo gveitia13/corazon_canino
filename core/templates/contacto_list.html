@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block columns %}
-    <td>Nombre</td>
-    <td>área</td>
+    <td>Nombre y apellidos</td>
+    <td>Facultad o área</td>
+    <td>Cargo</td>
     <td>Teléfono</td>
-    <td>Opciones</td>
+    {% if user.is_authenticated %}
+        <td>Opciones</td>
+    {% endif %}
 {% endblock %}
 
 {% block rows %}
@@ -17,13 +20,16 @@
             <tr>
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
                 <td>{{ obj.get_area_display }}</td>
+                <td>{{ obj.cargo }}</td>
                 <td>{{ obj.telefono }}</td>
-                <td>
-                    <a href="{% url 'contacto-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'contacto-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
-                </td>
+                {% if user.is_authenticated %}
+                    <td>
+                        <a href="{% url 'contacto-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'contacto-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     {% else %}

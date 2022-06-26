@@ -13,10 +13,10 @@
     </div>
 {% endblock %}
 {% block columns %}
+    <td>Fecha</td>
     <td>Nombre</td>
     <td>Carnet</td>
     <td>Organización</td>
-    <td>Fecha</td>
     <td>Es veterinario</td>
     <td>Opciones</td>
 {% endblock %}
@@ -25,10 +25,10 @@
     {% if object_list %}
         {% for obj in object_list %}
             <tr>
+                <td>{{ obj.fecha|date:'d-m-Y' }}</td>
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
                 <td>{{ obj.ci }}</td>
-                <td>{{ obj.organizacion }}</td>
-                <td>{{ obj.fecha|date:'d-m-Y' }}</td>
+                <td>{% if obj.organizacion %}{{ obj.organizacion }}{% else %}Sin Organización{% endif %}</td>
                 {% if obj.veterinario %}
                     <td>Si</td>
                 {% else %}

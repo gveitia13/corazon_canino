@@ -45,11 +45,13 @@
         </div>
         <!-- /.card-body -->
         {% block buttons_list %}
-            <div class="card-footer circular-bottom">
-                <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
-                    <i class="mdi mdi-plus"></i> Crear {{ entity }}
-                </a>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="card-footer circular-bottom">
+                    <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
+                        <i class="mdi mdi-plus"></i> Crear {{ entity }}
+                    </a>
+                </div>
+            {% endif %}
         {% endblock %}
 
     </div>

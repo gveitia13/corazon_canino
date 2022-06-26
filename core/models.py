@@ -131,7 +131,9 @@ class Visita(models.Model):
         null=True, blank=True, verbose_name="Edad (opcional)")
     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
                                 validators=[TELEFONO_REGEX])
-    ci = models.CharField(max_length=11, validators=[MinLengthValidator(11)], verbose_name='Carnet')
+    ci = models.CharField(max_length=11, validators=[
+        RegexValidator(r'^[0-9]{11}$', 'El carnet debe ser de 11 dígitos')],
+                          verbose_name='Carnet')
     organizacion = models.CharField(
         max_length=255, verbose_name="Organización", null=True, blank=True)
     veterinario = models.BooleanField(
@@ -141,16 +143,27 @@ class Visita(models.Model):
     def __str__(self):
         return self.nombre + ' - ' + str(self.fecha)
 
+    class Meta:
+        ordering = ('-fecha',)
+
 
 class Evento(models.Model):
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
-    tipo = models.CharField(max_length=255, verbose_name="Tipo")
+    tipo = models.CharField(max_length=10, verbose_name="Tipo", choices=(
+        ('1', 'Campaña de desparasitación'),
+        ('2', 'Campaña de vacunación'),
+        ('3', 'Campaña de esterilización'),
+        ('4', 'Feria de adopciones'),
+    ))
     fecha = models.DateTimeField(default=datetime.now, verbose_name="Fecha")
     detalles = models.CharField(max_length=500, verbose_name="Detalles")
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        ordering = ('-fecha',)
 
     def mostrar_foto(self):
         return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
@@ -175,7 +188,7 @@ class Contacto(models.Model):
     apellido = models.CharField(max_length=100, verbose_name="Apellidos")
     area = models.CharField(max_length=100, verbose_name="Facultad o área", choices=(
         ('f1', 'Facultad 1'),
-        ('f2', 'Facultad 3'),
+        ('f2', 'Facultad 2'),
         ('f3', 'Facultad 3'),
         ('f4', 'Facultad 4'),
         ('fte', 'Facultad FTE'),
@@ -289,11 +302,13 @@ class Desparasitacion(models.Model):
     ficha = models.ForeignKey(
         Ficha, on_delete=models.CASCADE, verbose_name='Ficha a desparasitar', )
     fecha = models.DateField(
-        verbose_name='Fecha de vacunación', default=datetime.utcnow)
+        verbose_name='Fecha de desparasitación', default=datetime.utcnow)
     tipo = models.CharField(max_length=100, choices=(
-        ('externa', 'Desparasitación externa'),
-        ('interna', 'Desparasitación interna'),), verbose_name='Tipo')
-    peso = models.FloatField(verbose_name='Peso', validators=[
+        ('externa', 'Externa'),
+        ('interna', 'Interna'),
+        ('ambas', 'Externa e Interna'),
+    ), verbose_name='Tipo')
+    peso = models.FloatField(verbose_name='Peso (kG)', validators=[
         MinValueValidator(0, 'Debe ser positivo')])
 
     def __str__(self):
@@ -313,7 +328,8 @@ class Desparasitacion(models.Model):
 class Medicamento(models.Model):
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     descripcion = models.CharField(max_length=500, verbose_name='Descripcion')
-    cantidad = models.PositiveIntegerField(verbose_name='Cantidad')
+
+    # cantidad = models.PositiveIntegerField(verbose_name='Cantidad')
 
     def __str__(self):
         return self.nombre

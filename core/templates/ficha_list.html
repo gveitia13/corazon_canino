@@ -19,7 +19,7 @@
 {% block rows %}
     {% if object_list %}
         {% for obj in object_list %}
-            <tr>
+            <tr class="">
                 <td>{{ obj.link_foto }}</td>
                 {#                <td>{{ obj.link_qr }}</td>#}
                 {#                <td>{% qr_from_text request.build_absolute_uri|concat_string:obj.pk size=5 version=12 %}</td>#}
@@ -27,13 +27,15 @@
                     {% qr_from_text 'http://'|concat_string:request.get_host|concat_string:'/'|concat_string:'ficha/details/'|concat_string:obj.pk size=8 version=3 border=4 %}
                 </td>
                 <td>{{ obj.nombre }}</td>
-                <td>
+                <td class="">
                     <a class="btn btn-success btn-sm circular ficha-details"
                        id="{{ obj.id }}"><i class="mdi mdi-magnify"></i></a>
-                    <a href="{% url 'ficha_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'ficha_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'ficha_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'ficha_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
@@ -44,14 +46,17 @@
     {% endif %}
 {% endblock %}
 {% block buttons_list %}
-    <div class="card-footer circular-bottom">
+    {% if user.is_authenticated %}
+        <div class="card-footer circular-bottom">
         <a href="{{ create_url }}" class="btn btn-primary btnAdd circular">
             <i class="mdi mdi-plus"></i> Crear {{ entity }}
         </a>
-        <a href="#" class="btn btn-info circular" id="scan-qr">
-            <i class="mdi mdi-qrcode-scan"></i> Escanear Qr
-        </a>
-    </div>
+    {% endif %}
+
+{#<a href="#" class="btn btn-info circular" id="scan-qr">#}
+{#    <i class="mdi mdi-qrcode-scan"></i> Escanear Qr#}
+{#</a>#}
+</div>
 {% endblock %}
 {% block javascript %}
     {% include 'modal_ficha.html' %}

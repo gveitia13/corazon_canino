@@ -193,7 +193,7 @@ class VisitaDeleteView(LoginRequiredMixin, generic.DeleteView):
 class EventoListView(generic.ListView, ):
     model = Evento
     template_name = 'evento_list.html'
-    queryset = Evento.objects.all()
+    queryset = Evento.objects.all().order_by('-fecha')
     success_url = reverse_lazy('evento-list')
 
     def get_context_data(self, **kwargs):
@@ -207,9 +207,10 @@ class EventoListView(generic.ListView, ):
         qs = super(EventoListView, self).get_queryset()
         if self.request.GET:
             if not self.request.GET.get('initial') or not self.request.GET.get('end'):
-                return qs
-            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
-        return qs
+                return qs.order_by('-fecha')
+            qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')]).order_by(
+                '-fecha')
+        return qs.order_by('-fecha')
 
 
 class EventoCreateView(LoginRequiredMixin, generic.CreateView):
