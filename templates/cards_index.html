@@ -10,7 +10,6 @@
                     <ul class="mb-0">
                         <li class="text-gray-dark"><a href="{% url "ficha_list" %}">Listado</a></li>
                         <li class="text-gray-dark"><a href="{% url "ficha_add" %}">Registrar</a></li>
-                        <li class="text-gray-dark"><a href="#">Escanear Qr</a></li>
                         {% if user.is_authenticated %}
                             <li class="text-gray-dark"><a href="{% url 'vacuna-add' %}">Vacunas</a></li>
                             <li class="text-gray-dark"><a href="{% url 'desparasitacion-add' %}">Desparasitación</a>

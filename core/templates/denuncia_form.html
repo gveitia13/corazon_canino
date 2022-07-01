@@ -21,31 +21,6 @@
             </div>
             <div class="card-body">
                 {% csrf_token %}
-
-                <input type="hidden" name="action" value="{{ action }}">
-                {% if form.errors %}
-                    <div class="alert alert-danger circular alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                        <h5><i class="icon mdi mdi-content-save-settings"></i>Ha ocurrido un error al querer guardar el
-                            registro</h5>
-                        <ul>
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% for field in form.visible_fields %}
-                    <div class="form-group row">
-                        <label for="asd" class="col-sm-2 col-form-label">{{ field.label }}:</label>
-                        <div class="col-sm-10">
-                            {{ field|add_class:'circular'|attr:'autocomplete:off' }}
-                        </div>
-                    </div>
-                {% endfor %}
-
                 <div class=" form-group row">
                     <label for="asd" class="col-sm-2 col-form-label">Tipo de denuncia:</label>
                     <div class="col-sm-10">
@@ -76,6 +51,31 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="action" value="{{ action }}">
+                {% if form.errors %}
+                    <div class="alert alert-danger circular alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        <h5><i class="icon mdi mdi-content-save-settings"></i>Ha ocurrido un error al querer guardar el
+                            registro</h5>
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% for field in form.visible_fields %}
+                    <div class="form-group row">
+                        <label for="asd" class="col-sm-2 col-form-label">{{ field.label }}:</label>
+                        <div class="col-sm-10">
+                            {{ field|add_class:'circular'|attr:'autocomplete:off' }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+
 
                 <div class="form-group row">
                     <label for="asd" class="col-sm-2 col-form-label">Fotos de evidencia</label>

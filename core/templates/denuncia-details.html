@@ -1,0 +1,78 @@
+{% extends 'body.html' %}
+{% load widget_tweaks %}
+{% block head %}
+    {% block head_form %}
+
+    {% endblock %}
+{% endblock %}
+{% block content %}
+    <div class="card card-info circular">
+        <div class="card-header circular-top">
+            <h3 class="card-title">
+                {% if action == 'add' %}
+                    <i class="mdi mdi-plus"></i>
+                {% else %}
+                    <i class="mdi mdi-square-edit-outline"></i>
+                {% endif %}
+                {{ title }}
+            </h3>
+        </div>
+
+        <div class="card card-body widget-user mb-0">
+            <div class="row">
+                {% for foo in object.fotodenuncia_set.all %}
+                    <div class="col-6 col-sm-4 col-md-3 text-center p-0">
+                        <a href="{{ foo.foto.url }}"><img class="circular agrandar my-1" src="{{ foo.foto.url }}"
+                                                          style="height: 150px;width: 150px"
+                                                          alt="User Avatar"></a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="card-body px-0 circular-bottom">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Descripción: </strong>
+                            <br>
+                            <span id="modal-enfermedades">{{ object.descripcion }}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Ubicación de los hechos: </strong>
+                            <br>
+                            <span id="modal-enfermedades">{{ object.ubicacion }}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Características del animal: </strong>
+                            <br>
+                            <span id="modal-enfermedades">{{ object.caracteristicas }}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Fecha de creado: </strong>
+                            <br>
+                            <span id="modal-enfermedades">{{ object.date_creation }}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <div class="">
+                            <strong class="d-sm-inline-block d-none">Tipo de denuncia: </strong>
+                            <br>
+                            <span id="modal-enfermedades">{{ object.tipo }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer circular-bottom">
+            <a href="{% url 'denuncia-list' %}" class="btn bg-gradient-primary circular">
+                <i class="mdi mdi-arrow-left-bold"></i> Atrás
+            </a>
+        </div>
+    </div>
+{% endblock %}

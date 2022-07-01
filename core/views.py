@@ -53,7 +53,7 @@ class FichaListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'ficha-details':
-                data = Ficha.objects.get(pk=request.POST['id']).toJSON()
+                data = Ficha.objects.get(pk=request.POST['id']).toJSON
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -142,6 +142,23 @@ class VisitaListView(generic.ListView, ):
                 return qs
             qs = qs.filter(fecha__range=[self.request.GET.get('initial'), self.request.GET.get('end')])
         return qs
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            print(request.POST)
+            action = request.POST['action']
+            if action == 'visita-details':
+                data = Visita.objects.get(pk=request.POST['id']).toJSON
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
 
 
 class VisitaCreateView(LoginRequiredMixin, generic.CreateView):
@@ -389,6 +406,23 @@ class AsociadoListView(generic.ListView, ):
         context['title'] = 'Listado de asociados al proyecto'
         return context
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            print(request.POST)
+            action = request.POST['action']
+            if action == 'asociado-details':
+                data = Asociado.objects.get(pk=request.POST['id']).toJSON
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
 
 class AsociadoCreateView(LoginRequiredMixin, generic.CreateView):
     model = Asociado
@@ -448,6 +482,23 @@ class EnfermedadListView(generic.ListView, ):
         context['title'] = 'Enfermedades más comunes'
         return context
 
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            print(request.POST)
+            action = request.POST['action']
+            if action == 'enfermedad-details':
+                data = Enfermedad.objects.get(pk=request.POST['id']).toJSON
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
+
 
 class EnfermedadCreateView(LoginRequiredMixin, generic.CreateView):
     model = Enfermedad
@@ -494,7 +545,7 @@ class EnfermedadDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 # CRUD Denuncia
-class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
+class DenunciaListView(generic.ListView, ):
     model = Denuncia
     template_name = 'denuncia_list.html'
     queryset = Denuncia.objects.all()
@@ -516,11 +567,22 @@ class DenunciaListView(LoginRequiredMixin, generic.ListView, ):
         return qs
 
 
+class DenunciaDetailsView(generic.DetailView):
+    template_name = 'denuncia-details.html'
+    model = Denuncia
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['entity'] = 'Denuncia'
+        context['title'] = 'Detalles de la denuncia'
+        return context
+
+
 class DenunciaCreateView(generic.TemplateView):
     model = Denuncia
     template_name = 'denuncia_form.html'
     form_class = DenunciaForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('denuncia-list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -558,7 +620,8 @@ class DenunciaCreateView(generic.TemplateView):
 
             mensaje = MIMEMultipart()
             mensaje['From'] = settings.EMAIL_HOST_USER
-            mensaje['To'] = 'gveitia13@gmail.com'
+            # mensaje['To'] = 'gveitia13@gmail.com'
+            mensaje['To'] = settings.CORREO_DE_DENUNCIA
             mensaje['Subject'] = 'Nueva denuncia'
             content = render_to_string('email.html', {'object': denuncia})
             mensaje.attach(MIMEText(content, 'html'))
@@ -576,7 +639,7 @@ class DenunciaCreateView(generic.TemplateView):
         except Exception as a:
             print(a)
             return JsonResponse({}, safe=False)
-        return redirect(reverse_lazy('index'))
+        return redirect(reverse_lazy('denuncia-list'))
 
 
 class DenunciaUpdateView(generic.UpdateView):
@@ -686,7 +749,7 @@ class DesparasitacionListView(LoginRequiredMixin, generic.ListView, ):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('desparasitacion-add')
         context['entity'] = 'Desparasitacion'
-        context['title'] = 'Listados de desparasitaciones'
+        context['title'] = 'Desparasitaciones'
         return context
 
     def get_queryset(self):
@@ -755,6 +818,23 @@ class MedicamentoListView(generic.ListView, ):
         context['entity'] = 'Medicamento'
         context['title'] = 'Medicamentos disponibles'
         return context
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            print(request.POST)
+            action = request.POST['action']
+            if action == 'enfermedad-details':
+                data = Medicamento.objects.get(pk=request.POST['id']).toJSON
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
 
 
 class MedicamentoCreateView(LoginRequiredMixin, generic.CreateView):

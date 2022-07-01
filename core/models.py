@@ -31,8 +31,8 @@ class Ficha(models.Model):
     sexo = models.CharField(max_length=255, choices=SEXO_CHOICES, verbose_name="Sexo")
     esterilizado = models.BooleanField(default=False, verbose_name="Esterilizado")
     peso = models.FloatField(verbose_name="Peso en KG", validators=[
-        MinValueValidator(0, 'Debe ser positivo')])
-    enfermedades = models.CharField(max_length=255, verbose_name='Enfermedades o lesiones',
+        MinValueValidator(0, 'Debe ser positivo')], null=True, blank=True)
+    enfermedades = models.TextField(verbose_name='Enfermedades o lesiones',
                                     null=True, blank=True)
     qr = models.CharField(max_length=900, blank=True, null=True, verbose_name="Código Qr")
     date_creation = models.DateField(auto_now_add=True, null=True, blank=True,
@@ -47,8 +47,8 @@ class Ficha(models.Model):
         json['sexo'] = 'Macho' if self.sexo == 'm' else 'Hembra'
         json['esterilizado'] = 'Si' if self.esterilizado else 'No'
         json['enfermedades'] = 'Ninguna' if not self.enfermedades else self.enfermedades
-        json['vacunas'] = [i.toJSON() for i in self.vacuna_set.all()] if self.vacuna_set.exists() else []
-        json['desparasitaciones'] = [i.toJSON() for i in
+        json['vacunas'] = [i.toJSON for i in self.vacuna_set.all()] if self.vacuna_set.exists() else []
+        json['desparasitaciones'] = [i.toJSON for i in
                                      self.desparasitacion_set.all()] if self.desparasitacion_set.exists() else []
         json['qr'] = self.qr_relativo()
         return json
@@ -123,6 +123,9 @@ class Ficha(models.Model):
             print(imagen)
         super(Ficha, self).save(*args, **kwargs)
 
+    class Meta:
+        ordering = ('nombre',)
+
 
 class Visita(models.Model):
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
@@ -139,6 +142,11 @@ class Visita(models.Model):
     veterinario = models.BooleanField(
         default=True, verbose_name="Es veterinario")
     fecha = models.DateField(default=datetime.now, verbose_name="Fecha")
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['veterinario'] = 'Si' if self.veterinario else 'No'
+        return item
 
     def __str__(self):
         return self.nombre + ' - ' + str(self.fecha)
@@ -216,19 +224,32 @@ class Asociado(models.Model):
         return self.nombre
 
     def mostrar_foto(self):
-        return mark_safe('<img src="' + self.foto.url + '"  width="80" height="80" class="circular agrandar '
+        return mark_safe('<img src="' + self.foto.url + '"  width="100" height="80" class="circular agrandar '
                                                         'cursor-zoom-in">')
 
     def link_foto(self):
         return mark_safe(f'<a href="{self.foto.url}"> {self.mostrar_foto()}</a>')
 
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['foto'] = self.foto.url
+        print(item)
+        return item
+
 
 class Enfermedad(models.Model):
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
-    descripcion = models.CharField(max_length=900, verbose_name='Descripción')
+    descripcion = models.TextField(verbose_name='Descripción')
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        ordering = ('nombre',)
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
 
 
 class Denuncia(models.Model):
@@ -308,7 +329,7 @@ class Desparasitacion(models.Model):
         ('interna', 'Interna'),
         ('ambas', 'Externa e Interna'),
     ), verbose_name='Tipo')
-    peso = models.FloatField(verbose_name='Peso (kG)', validators=[
+    peso = models.FloatField(verbose_name='Peso (kg)', validators=[
         MinValueValidator(0, 'Debe ser positivo')])
 
     def __str__(self):
@@ -329,7 +350,12 @@ class Medicamento(models.Model):
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     descripcion = models.CharField(max_length=500, verbose_name='Descripcion')
 
-    # cantidad = models.PositiveIntegerField(verbose_name='Cantidad')
+    class Meta:
+        ordering = ('nombre',)
 
     def __str__(self):
         return self.nombre
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item

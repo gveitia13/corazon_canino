@@ -12,7 +12,6 @@
 {% block columns %}
 
     <td>Evidencia</td>
-    <td>Descripción</td>
     <td>Características</td>
     <td>Fecha</td>
     <td>Opciones</td>
@@ -23,14 +22,18 @@
         {% for obj in object_list %}
             <tr>
                 <td>{{ obj.link_foto }}</td>
-                <td>{{ obj.descripcion }}</td>
                 <td>{{ obj.caracteristicas }}</td>
                 <td>{{ obj.date_creation|date:'d-m-Y' }}</td>
                 <td>
-                    <a href="{% url 'denuncia-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'denuncia-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
+                    <a href="{% url 'denuncia-details' obj.pk %}" class="btn btn-success btn-sm circular">
+                        <i class="mdi mdi-magnify-plus-outline"></i>
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'denuncia-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'denuncia-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

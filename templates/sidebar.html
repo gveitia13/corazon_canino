@@ -5,7 +5,7 @@
              alt="AdminLTE Logo"
              class="brand-image img-circle"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">Corazón Canino</span>
+        <span class="brand-text font-weight-bolder">Corazón Canino</span>
     </a>
     <div class="sidebar">
         {% comment %}    {% if request.user.is_authenticated %}
@@ -46,7 +46,7 @@
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a href="{% url 'denuncia-add' %}" class="nav-link denuncia-sidebar">
+                    <a href="{% url 'denuncia-list' %}" class="nav-link denuncia-sidebar">
                         <i class="nav-icon mdi mdi-chat-alert"></i>
                         <p>
                             Denuncias
@@ -87,16 +87,14 @@
                     </a>
                 </li>
                 <li class="nav-header">Colaboradores</li>
-                {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'visita-list' %}" class="nav-link visita-sidebar">
-                            <i class="nav-icon mdi mdi-account-group"></ "></i>
+                            <i class="nav-icon mdi mdi-account-group"></i>
                             <p>
                                 Visitas
                             </p>
                         </a>
                     </li>
-                {% endif %}
                 <li class="nav-item">
                     <a href="{% url 'asociado-list' %}" class="nav-link asociado-sidebar">
                         <i class="nav-icon mdi mdi-account-multiple-check"></i>

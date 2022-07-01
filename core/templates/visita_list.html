@@ -17,7 +17,6 @@
     <td>Nombre</td>
     <td>Carnet</td>
     <td>Organización</td>
-    <td>Es veterinario</td>
     <td>Opciones</td>
 {% endblock %}
 
@@ -29,16 +28,16 @@
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
                 <td>{{ obj.ci }}</td>
                 <td>{% if obj.organizacion %}{{ obj.organizacion }}{% else %}Sin Organización{% endif %}</td>
-                {% if obj.veterinario %}
-                    <td>Si</td>
-                {% else %}
-                    <td>No</td>
-                {% endif %}
                 <td>
-                    <a href="{% url 'visita-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                            class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="{% url 'visita-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                            class="mdi mdi-trash-can-outline"></i></a>
+                    <button class="btn btn-success btn-sm circular visita-details" id="{{ obj.pk }}">
+                        <i class="mdi mdi-magnify-plus"></i>
+                    </button>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'visita-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="{% url 'visita-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i></a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
@@ -49,5 +48,62 @@
     {% endif %}
 {% endblock %}
 {% block javascript %}
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content circular">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary circular" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      $('.visita-details').on('click', function () {
+        let id = this.id,
+          params = new FormData()
+        params.append('id', this.id)
+        params.append('action', 'visita-details')
+        submit_with_ajax(location.pathname, params, response => {
+          $('#modal-title').text(`${response['nombre']} ${response['apellido']}`)
+          $('#modal-body').html(`
+                <h5>Datos:</h5>
+                <div>
+                    <strong>Organización:</strong>
+                    <span>${response['organizacion'] ? response['organizacion'] : 'Sin organización'}</span>
+                </div>
+                <div>
+                    <strong>Teléfono:</strong>
+                    <span>${response['telefono']}</span>
+                </div>
+                <div>
+                    <strong>Carnet de identidad:</strong>
+                    <span>${response['ci']}</span>
+                </div>
+                <div>
+                    <strong>Edad:</strong>
+                    <span>${response['edad']}</span>
+                </div>
+                <div>
+                    <strong>Fecha:</strong>
+                    <span>${response['fecha']}</span>
+                </div>
+                <div>
+                    <strong>Veterinario:</strong>
+                    <span>${response['veterinario']}</span>
+                </div>
+          `)
+          $('#exampleModal').modal('show')
+        })
+      })
+    </script>
 {% endblock %}

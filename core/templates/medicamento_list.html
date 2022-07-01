@@ -2,32 +2,71 @@
 {% load static %}
 
 {% block columns %}
-    <td>Nombre</td>
-    <td>Descripción
-        {% if user.is_authenticated %}
-            <td>Opciones</td>
-        {% endif %}
+
 {% endblock %}
 
 {% block rows %}
     {% if object_list %}
         {% for obj in object_list %}
-            <tr>
-                <td class="">{{ obj.nombre }}</td>
-                <td class="">{{ obj.descripcion }}</td>
-                {% if user.is_authenticated %}
-                    <td class="">
-                        <a href="{% url 'medicamento-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
-                                class="mdi mdi-square-edit-outline"></i></a>
-                        <a href="{% url 'medicamento-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
-                                class="mdi mdi-trash-can-outline"></i></a>
-                    </td>
-                {% endif %}
-            </tr>
+            <div class="card circular">
+                <div class="card-header bg-gray-light circular-top">
+                    {{ obj.nombre }}
+                </div>
+                <div class="card-body">
+                    <p class="card-text truncate-3">{{ obj.descripcion }}</p>
+                </div>
+                <div class="card-footer text-right circular-bottom">
+                    <button class="btn btn-primary circular btn-sm enfermedad-details" id="{{ obj.pk }}">
+                        <i class="mdi mdi-magnify-plus-outline"></i>Detalles
+                    </button>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'enfermedad-update' obj.pk %}" class="btn btn-warning btn-sm circular"><i
+                                class="mdi mdi-square-edit-outline"></i> Editar</a>
+                        <a href="{% url 'enfermedad-delete' obj.pk %}"
+                           class="btn btn-danger btn-sm circular"><i
+                                class="mdi mdi-trash-can-outline"></i> Eliminar</a>
+                    {% endif %}
+                </div>
+            </div>
+
         {% endfor %}
     {% else %}
         <tr>
             <td> No hay datos para mostrar</td>
         </tr>
     {% endif %}
+{% endblock %}
+{% block javascript %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content circular">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary circular" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      $('.enfermedad-details').on('click', function () {
+        let id = this.id,
+          params = new FormData()
+        params.append('id', this.id)
+        params.append('action', 'enfermedad-details')
+        submit_with_ajax(location.pathname, params, response => {
+          $('#modal-title').text(response['nombre'])
+          $('#modal-body').text(response['descripcion'])
+          $('#exampleModal').modal('show')
+        })
+      })
+    </script>
 {% endblock %}

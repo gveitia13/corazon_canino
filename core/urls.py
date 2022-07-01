@@ -43,15 +43,16 @@ urlpatterns = [
     path('denuncia/list/', DenunciaListView.as_view(), name='denuncia-list'),
     path('denuncia/add/', DenunciaCreateView.as_view(), name='denuncia-add'),
     path('denuncia/update/<int:pk>/', DenunciaUpdateView.as_view(), name='denuncia-update'),
+    path('denuncia/details/<int:pk>/', DenunciaDetailsView.as_view(), name='denuncia-details'),
     path('denuncia/delete/<int:pk>/', DenunciaDeleteView.as_view(), name='denuncia-delete'),
     # Vacuna
     path('vacuna/list/', VacunaListView.as_view(), name='vacuna-list'),
-    path('vacuna/add/',VacunaCreateView.as_view(), name='vacuna-add'),
+    path('vacuna/add/', VacunaCreateView.as_view(), name='vacuna-add'),
     path('vacuna/update/<int:pk>/', VacunaUpdateView.as_view(), name='vacuna-update'),
     path('vacuna/delete/<int:pk>/', VacunaDeleteView.as_view(), name='vacuna-delete'),
     # Desparasitacion
     path('desparasitacion/list/', DesparasitacionListView.as_view(), name='desparasitacion-list'),
-    path('desparasitacion/add/',DesparasitacionCreateView.as_view(), name='desparasitacion-add'),
+    path('desparasitacion/add/', DesparasitacionCreateView.as_view(), name='desparasitacion-add'),
     path('desparasitacion/update/<int:pk>/', DesparasitacionUpdateView.as_view(), name='desparasitacion-update'),
     path('desparasitacion/delete/<int:pk>/', DesparasitacionDeleteView.as_view(), name='desparasitacion-delete'),
     # Medicamento
