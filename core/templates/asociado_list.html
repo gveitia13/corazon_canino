@@ -14,13 +14,13 @@
                 <td>{{ obj.link_foto }}</td>
                 <td>{{ obj.nombre }}</td>
                 <td>
-                    <button class="btn btn-success circular btn-sm asociado-details" id="{{ obj.pk }}">
+                    <button class="btn btn-success circular mb-1 btn-sm asociado-details" id="{{ obj.pk }}">
                         <i class="mdi mdi-magnify-plus-outline"></i>
                     </button>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'asociado-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                        <a href="{% url 'asociado-update' obj.id %}" class="btn mb-1 btn-warning btn-sm circular"><i
                                 class="mdi mdi-square-edit-outline"></i></a>
-                        <a href="{% url 'asociado-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                        <a href="{% url 'asociado-delete' obj.id %}" class="btn mb-1 btn-danger btn-sm circular"><i
                                 class="mdi mdi-trash-can-outline"></i></a>
                     {% endif %}
                 </td>
@@ -45,13 +45,14 @@
                     </button>
                 </div>
                 <div class="modal-body" id="modal-body">
-                    <div class="card" style="width: 18rem;">
-                        <img src="#" class="card-img-top" alt="..." id="image-asociado">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
+                    <img src="#" class="card-img-top" alt="..." id="image-asociado">
+                    <div>
+                        <strong>Link de contacto: </strong>
+                        <a href="#" id="link"></a>
+                    </div>
+                    <div>
+                        <strong>Teléfono: </strong>
+                        <span id="telefono"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -70,7 +71,9 @@
           console.log(response['foto'])
           $('#modal-title').text(response['nombre'])
           document.querySelector('#image-asociado').src = response['foto']
-          $('#modal-body').text(response['descripcion'])
+          document.querySelector('#link').href = response.link
+          document.querySelector('#link').innerText = response.link
+          document.querySelector('#telefono').innerText = response.telefono
           $('#exampleModal').modal('show')
         })
       })

@@ -8,10 +8,7 @@
     <td>Nombre y apellidos</td>
     <td>Facultad o área</td>
     <td>Cargo</td>
-    <td>Teléfono</td>
-    {% if user.is_authenticated %}
-        <td>Opciones</td>
-    {% endif %}
+    <td>Opciones</td>
 {% endblock %}
 
 {% block rows %}
@@ -21,15 +18,17 @@
                 <td>{{ obj.nombre }} {{ obj.apellido }}</td>
                 <td>{{ obj.get_area_display }}</td>
                 <td>{{ obj.cargo }}</td>
-                <td>{{ obj.telefono }}</td>
-                {% if user.is_authenticated %}
-                    <td>
-                        <a href="{% url 'contacto-update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                <td>
+                    <a rel="details" class="btn btn-sm btn-success circular mb-1" id="{{ obj.pk }}">
+                        <i class="mdi mdi-magnify-plus-outline"></i>
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'contacto-update' obj.id %}" class="btn mb-1 btn-warning btn-sm circular"><i
                                 class="mdi mdi-square-edit-outline"></i></a>
-                        <a href="{% url 'contacto-delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                        <a href="{% url 'contacto-delete' obj.id %}" class="btn btn-danger mb-1 btn-sm circular"><i
                                 class="mdi mdi-trash-can-outline"></i></a>
-                    </td>
-                {% endif %}
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     {% else %}
@@ -39,5 +38,50 @@
     {% endif %}
 {% endblock %}
 {% block javascript %}
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content circular">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary circular" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      $('a[rel=details]').on('click', function () {
+        let id = this.id,
+          params = new FormData()
+        params.append('id', this.id)
+        params.append('action', 'contacto-details')
+        submit_with_ajax(location.pathname, params, response => {
+          $('#modal-title').text(`${response['nombre']} ${response['apellido']}`)
+          $('#modal-body').html(`
+                <h5>Datos:</h5>
+                <div>
+                    <strong>Facultad o área:</strong>
+                    <span>${response['area']}</span>
+                </div>
+                <div>
+                    <strong>Cargo:</strong>
+                    <span>${response['cargo']}</span>
+                </div>
+                <div>
+                    <strong>Teléfono:</strong>
+                    <span>${response['telefono']}</span>
+                </div>
+          `)
+          $('#exampleModal').modal('show')
+        })
+      })
+    </script>
 {% endblock %}

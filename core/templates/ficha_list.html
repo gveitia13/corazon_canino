@@ -28,12 +28,12 @@
                 </td>
                 <td>{{ obj.nombre }}</td>
                 <td class="">
-                    <a class="btn btn-success btn-sm circular ficha-details"
+                    <a class="btn btn-success btn-sm circular ficha-details mb-1"
                        id="{{ obj.id }}"><i class="mdi mdi-magnify"></i></a>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'ficha_update' obj.id %}" class="btn btn-warning btn-sm circular"><i
+                        <a href="{% url 'ficha_update' obj.id %}" class="btn mb-1 btn-warning btn-sm circular"><i
                                 class="mdi mdi-square-edit-outline"></i></a>
-                        <a href="{% url 'ficha_delete' obj.id %}" class="btn btn-danger btn-sm circular"><i
+                        <a href="{% url 'ficha_delete' obj.id %}" class="btn mb-1 btn-danger btn-sm circular"><i
                                 class="mdi mdi-trash-can-outline"></i></a>
                     {% endif %}
                 </td>

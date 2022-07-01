@@ -5,27 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bddf303-9290-4cc5-9695-e2bf9a14a25a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/migrations/0018_alter_evento_options_alter_visita_options_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/templates/denuncia-details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/9c09a510-3186-4e90-8896-bf4458f49c9c.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/IMG_20220629_233622.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/fotos/IMG_20220629_233902.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/qr_relativo/0f6ac56e239938580925f729f51e91da9f2deddf4015c4d6d734ae753454fcdf.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/asociado_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/asociado_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/denuncia_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/contacto_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/contacto_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/denuncia-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia-details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/denuncia_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/denuncia_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/desparasitacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/desparasitacion_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/enfermedad_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/enfermedad_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/evento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/evento_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/ficha_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/ficha_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/informacion_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/informacion_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/medicamento_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/medicamento_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/vacuna_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/vacuna_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/visita_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/visita_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/fotos/justin-bieber-grammys.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/new.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/new.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto_canino/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_canino/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requerimientos.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cards_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cards_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +153,8 @@
       <workItem from="1656198638932" duration="7974000" />
       <workItem from="1656238902719" duration="4883000" />
       <workItem from="1656468562579" duration="7435000" />
-      <workItem from="1656616958444" duration="14545000" />
+      <workItem from="1656616958444" duration="17542000" />
+      <workItem from="1656659766633" duration="3817000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1653144124303</created>
@@ -333,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656243664162</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="casi ready el doc">
+      <created>1656644004489</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1656644004489</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +380,7 @@
     <MESSAGE value="correo con adjuntos ready" />
     <MESSAGE value="añadido tipo a denuncia" />
     <MESSAGE value="terminado casi todo lo del documento" />
-    <option name="LAST_COMMIT_MESSAGE" value="terminado casi todo lo del documento" />
+    <MESSAGE value="casi ready el doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="casi ready el doc" />
   </component>
 </project>

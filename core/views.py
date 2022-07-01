@@ -53,7 +53,7 @@ class FichaListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'ficha-details':
-                data = Ficha.objects.get(pk=request.POST['id']).toJSON
+                data = Ficha.objects.get(pk=request.POST['id']).toJSON()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -153,7 +153,7 @@ class VisitaListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'visita-details':
-                data = Visita.objects.get(pk=request.POST['id']).toJSON
+                data = Visita.objects.get(pk=request.POST['id']).toJSON()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -285,7 +285,7 @@ class InformacionListView(generic.ListView, ):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('informacion-add')
         context['entity'] = 'Información'
-        context['title'] = 'Información del proyecto'
+        context['title'] = 'Informaciones'
         return context
 
 
@@ -344,8 +344,25 @@ class ContactoListView(generic.ListView, ):
         context = super().get_context_data(**kwargs)
         context['create_url'] = reverse_lazy('contacto-add')
         context['entity'] = 'Contacto'
-        context['title'] = 'Listado de miembros del proyecto'
+        context['title'] = 'Contactos'
         return context
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:
+            print(request.POST)
+            action = request.POST['action']
+            if action == 'contacto-details':
+                data = Contacto.objects.get(pk=request.POST['id']).toJSON()
+            else:
+                data['error'] = 'Ha ocurrido un error'
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data, safe=False)
 
 
 class ContactoCreateView(LoginRequiredMixin, generic.CreateView):
@@ -416,7 +433,7 @@ class AsociadoListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'asociado-details':
-                data = Asociado.objects.get(pk=request.POST['id']).toJSON
+                data = Asociado.objects.get(pk=request.POST['id']).toJSON()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -492,7 +509,7 @@ class EnfermedadListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'enfermedad-details':
-                data = Enfermedad.objects.get(pk=request.POST['id']).toJSON
+                data = Enfermedad.objects.get(pk=request.POST['id']).toJSON()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
@@ -829,7 +846,7 @@ class MedicamentoListView(generic.ListView, ):
             print(request.POST)
             action = request.POST['action']
             if action == 'enfermedad-details':
-                data = Medicamento.objects.get(pk=request.POST['id']).toJSON
+                data = Medicamento.objects.get(pk=request.POST['id']).toJSON()
             else:
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:

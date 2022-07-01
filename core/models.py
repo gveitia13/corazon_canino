@@ -5,6 +5,7 @@ from datetime import datetime
 
 import qrcode
 from crum import get_current_request
+from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator, MinLengthValidator, MinValueValidator
 from django.db import models
 from django.forms import model_to_dict
@@ -12,11 +13,25 @@ from django.http import HttpRequest
 from django.utils.safestring import mark_safe
 
 SOLO_TEXTO_REGEX = RegexValidator(r'^[a-zA-Z]+$', 'Solo se admiten letras')
-TELEFONO_REGEX = RegexValidator(r'^[\+]?[\d]{5,15}$', 'Formato incorrecto')
+TELEFONO_REGEX = RegexValidator(r'^[\+]?[\d]{5,15}$', 'Formato incorrecto del teléfono')
 
 
 def hash_string(string):
     return hashlib.sha256(string.encode('utf-8')).hexdigest()
+
+
+def validate_upper_nombre(value: str):
+    if value[0].isupper():
+        return value
+    else:
+        raise ValidationError('El nombre debe comenzar con mayúscula')
+
+
+def validate_upper_apellido(value: str):
+    if value[0].isupper():
+        return value
+    else:
+        raise ValidationError('El apellido debe comenzar con mayúscula')
 
 
 class Ficha(models.Model):
@@ -24,7 +39,7 @@ class Ficha(models.Model):
         ('m', 'Macho'),
         ('h', 'Hembra'),
     )
-    nombre = models.CharField(max_length=255, verbose_name="Nombre")
+    nombre = models.CharField(max_length=255, verbose_name="Nombre", validators=[validate_upper_nombre])
     color = models.CharField(max_length=255, verbose_name="Color")
     raza = models.CharField(max_length=255, verbose_name="Raza")
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
@@ -128,8 +143,8 @@ class Ficha(models.Model):
 
 
 class Visita(models.Model):
-    nombre = models.CharField(max_length=255, verbose_name="Nombre")
-    apellido = models.CharField(max_length=255, verbose_name="Apellidos")
+    nombre = models.CharField(max_length=255, verbose_name="Nombre", validators=[validate_upper_nombre])
+    apellido = models.CharField(max_length=255, verbose_name="Apellidos", validators=[validate_upper_apellido])
     edad = models.IntegerField(
         null=True, blank=True, verbose_name="Edad (opcional)")
     telefono = models.CharField(max_length=255, null=True, blank=True, verbose_name="Teléfono",
@@ -156,7 +171,7 @@ class Visita(models.Model):
 
 
 class Evento(models.Model):
-    nombre = models.CharField(max_length=255, verbose_name="Nombre")
+    nombre = models.CharField(max_length=255, verbose_name="Nombre", validators=[validate_upper_nombre])
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
     tipo = models.CharField(max_length=10, verbose_name="Tipo", choices=(
         ('1', 'Campaña de desparasitación'),
@@ -192,8 +207,9 @@ class Informacion(models.Model):
 
 
 class Contacto(models.Model):
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
-    apellido = models.CharField(max_length=100, verbose_name="Apellidos")
+    nombre = models.CharField(max_length=100, verbose_name="Nombre",
+                              validators=[validate_upper_nombre, ])
+    apellido = models.CharField(max_length=100, verbose_name="Apellidos", validators=[validate_upper_apellido])
     area = models.CharField(max_length=100, verbose_name="Facultad o área", choices=(
         ('f1', 'Facultad 1'),
         ('f2', 'Facultad 2'),
@@ -212,10 +228,15 @@ class Contacto(models.Model):
     def __str__(self):
         return self.nombre
 
+    def toJSON(self):
+        item = model_to_dict(self)
+        item['area'] = self.get_area_display()
+        return item
+
 
 class Asociado(models.Model):
     foto = models.ImageField(upload_to='fotos/', verbose_name="Foto")
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    nombre = models.CharField(max_length=100, verbose_name="Nombre", validators=[validate_upper_nombre])
     telefono = models.CharField(verbose_name='Teléfono', max_length=20,
                                 validators=[TELEFONO_REGEX])
     link = models.URLField(max_length=900, verbose_name='Link de contacto')
@@ -238,7 +259,7 @@ class Asociado(models.Model):
 
 
 class Enfermedad(models.Model):
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    nombre = models.CharField(max_length=100, verbose_name="Nombre", validators=[validate_upper_nombre])
     descripcion = models.TextField(verbose_name='Descripción')
 
     def __str__(self):
@@ -347,7 +368,7 @@ class Desparasitacion(models.Model):
 
 
 class Medicamento(models.Model):
-    nombre = models.CharField(max_length=200, verbose_name='Nombre')
+    nombre = models.CharField(max_length=200, verbose_name='Nombre',validators=[validate_upper_nombre])
     descripcion = models.CharField(max_length=500, verbose_name='Descripcion')
 
     class Meta:
